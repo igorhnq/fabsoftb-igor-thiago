@@ -7,13 +7,14 @@ public class Cliente {
     private long id;
     private String nome;
     private String endereco;
-    private ArrayList listaPokemon = new ArrayList();
+    private ArrayList<Pokemon> listaPokemon = new ArrayList<Pokemon>(); //Aceita qualquer tipo de dado primitivo (Int, Float, String, Boolean)
+    //^^Autobox: escreve em tipo primitivo e transforma para objeto 
     private Cidade cidade;
-
-    public ArrayList getListaPokemon() {
+    //<> ---> "Operador diamante", quando tu coloca isso com o Array, ela se torna uma lista genérica que aceita somente o que você colocou nele 
+    public ArrayList<Pokemon> getListaPokemon() {
         return listaPokemon;
     }
-    public void setListaPokemon(ArrayList listaPokemon) {
+    public void setListaPokemon(ArrayList<Pokemon> listaPokemon) {
         this.listaPokemon = listaPokemon;
     }
 
