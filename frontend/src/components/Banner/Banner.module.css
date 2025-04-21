@@ -2,7 +2,7 @@
     position: relative;
     border-radius: 35px;
     padding: 2.5rem;
-    margin: 2rem 5rem;
+    margin: 2rem 0;
     background-image: url('src/assets/products_banner.svg');
     background-size: cover;
     background-position: center;
