@@ -1,6 +1,31 @@
 .productCard {
-    width: 200px;
+    width: 185px;
     height: 200px;
-    background-color: #ccc;
+    background-color: #dcdcdc;
     border-radius: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.priceTag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0.25rem 0.625rem;
+    background-color: transparent;
+    border: 1px solid #333;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.productName {
+    background-color: #a4a488;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
 }
