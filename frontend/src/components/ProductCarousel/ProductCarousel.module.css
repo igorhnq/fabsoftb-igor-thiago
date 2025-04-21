@@ -1,0 +1,15 @@
+.productCarousel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.productCarousel h4 {
+    font-size: 2rem;
+}
+
+.productCarouselContainer {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+}
