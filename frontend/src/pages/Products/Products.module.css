@@ -1,0 +1,35 @@
+.productsContainer {
+    margin: 0 5rem;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+    background-color: #eee;
+    border: none;
+}
+
+.searchContainer input {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
