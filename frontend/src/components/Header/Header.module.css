@@ -22,6 +22,11 @@ ul {
     gap: 1rem;
 }
 
+.link {
+    text-decoration: none;
+    color: var(--black-bean);
+}
+
 li:hover {
     cursor: pointer;
     border-bottom: 2px solid var(--matcha-leaf);
