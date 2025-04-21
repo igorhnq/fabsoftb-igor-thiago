@@ -9,7 +9,7 @@ export default function Header() {
         <header>
             <img src={logo} />
             <nav>
-                <ul>
+                <ul className={styles.navList}>
                     <li><Link className={styles.link} to="/">Início</Link></li>
                     <li><Link className={styles.link} to="/products">Cardápio</Link></li>
                     <li><Link className={styles.link} to="/cafeterias">Cafeterias</Link></li>

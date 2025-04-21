@@ -15,7 +15,7 @@ nav {
     color: var(--black-bean);
 }
 
-ul {
+.navList {
     display: flex;
     align-items: center;
     list-style: none;
@@ -27,7 +27,7 @@ ul {
     color: var(--black-bean);
 }
 
-li:hover {
+.link:hover {
     cursor: pointer;
     border-bottom: 2px solid var(--matcha-leaf);
 }
