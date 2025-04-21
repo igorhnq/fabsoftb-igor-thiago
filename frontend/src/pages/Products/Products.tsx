@@ -17,8 +17,11 @@ export default function Products() {
                 </div>
             </div>
             <h3>Buscando por: <span>Valor do select</span></h3>
-            <ProductCarousel />
-            <ProductCarousel />
+            <ProductCarousel title="Promoções" />
+            <ProductCarousel title="Bebidas" />
+            <ProductCarousel title="Salgados" />
+            <ProductCarousel title="Doces" />
+            <ProductCarousel title="Pratos de balcão" />
         </div>
     );
 }
