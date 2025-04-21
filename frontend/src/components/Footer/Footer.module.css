@@ -1,0 +1,40 @@
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    background-color: var(--dusty-matcha);
+    padding: 1rem 2rem;
+    gap: 3rem;
+}
+
+.aboutUs {
+    display: flex;
+    flex-direction: row;
+}
+
+h5 {
+    font-size: 1.7rem;
+}
+
+.aboutUsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.aboutUsItem {
+    font-size: 1.1rem;
+    font-weight: 400;
+    list-style: none;
+}
+
+.aboutUsItem:hover {
+    cursor: pointer;
+}
+
+.paymentMethods {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+}
+

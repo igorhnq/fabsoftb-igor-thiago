@@ -2,26 +2,29 @@ import { MagnifyingGlass } from "@phosphor-icons/react";
 import Banner from "../../components/Banner/Banner";
 import CustomSelect from "../../components/Input/Select/CustomSelect";
 import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
-
+import Footer from "../../components/Footer/Footer";
 import styles from "./Products.module.css";
 
 export default function Products() {
     return (
-        <div className={styles.productsContainer}>
-            <Banner />
-            <div className={styles.inputContainer}>
-                <CustomSelect />
-                <div className={styles.searchContainer}>
-                    <MagnifyingGlass size={18} weight="bold" />
-                    <input type="text" placeholder="Buscar por Produto" />
+        <div>
+            <div className={styles.productsContainer}>
+                <Banner />
+                <div className={styles.inputContainer}>
+                    <CustomSelect />
+                    <div className={styles.searchContainer}>
+                        <MagnifyingGlass size={18} weight="bold" />
+                        <input type="text" placeholder="Buscar por Produto" />
+                    </div>
                 </div>
+                <h3>Buscando por: <span>Valor do select</span></h3>
+                <ProductCarousel title="Promoções" />
+                <ProductCarousel title="Bebidas" />
+                <ProductCarousel title="Salgados" />
+                <ProductCarousel title="Doces" />
+                <ProductCarousel title="Pratos de balcão" />
             </div>
-            <h3>Buscando por: <span>Valor do select</span></h3>
-            <ProductCarousel title="Promoções" />
-            <ProductCarousel title="Bebidas" />
-            <ProductCarousel title="Salgados" />
-            <ProductCarousel title="Doces" />
-            <ProductCarousel title="Pratos de balcão" />
+            <Footer />
         </div>
     );
 }
