@@ -12,9 +12,9 @@ h4 {
     gap: 10px;
 	margin-top: 1rem;
 }
-  
-  .arrowLeft,
-  .arrowRight {
+
+.arrowLeft,
+.arrowRight {
     background-color: #ddd;
     border: none;
     border-radius: 50%;
