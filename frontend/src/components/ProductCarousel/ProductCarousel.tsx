@@ -3,6 +3,7 @@ import ProductCard from "../Card/ProductCard/ProductCard";
 
 import "keen-slider/keen-slider.min.css";
 import styles from "./ProductCarousel.module.css";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 
 export default function ProductCarousel() {
     const [sliderRef, instanceRef] = useKeenSlider({
@@ -13,7 +14,9 @@ export default function ProductCarousel() {
         <div>
             <h4>Promoções</h4>
             <div className={styles.carouselWrapper}>
-                <button onClick={() => instanceRef.current?.prev()} className={styles.arrowLeft}>◀</button>
+                <button onClick={() => instanceRef.current?.prev()} className={styles.arrowLeft}>
+                    <CaretLeft size={32} weight="bold" color="var(--matcha-moss)" />
+                </button>
 
                 <div ref={sliderRef} className="keen-slider">
                     <div className="keen-slider__slide"><ProductCard /></div>
@@ -27,7 +30,9 @@ export default function ProductCarousel() {
                     <div className="keen-slider__slide"><ProductCard /></div>
                 </div>
 
-                <button onClick={() => instanceRef.current?.next()} className={styles.arrowRight}>▶</button>
+                <button onClick={() => instanceRef.current?.next()} className={styles.arrowRight}>
+                    <CaretRight size={32} weight="bold" color="var(--matcha-moss)" />
+                </button>
             </div>
         </div>
     );
