@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--vanilla-cream);
+    padding: 0.8rem 2rem;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--black-bean);
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+li:hover {
+    cursor: pointer;
+    border-bottom: 2px solid var(--matcha-leaf);
+}
+
+.icon:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
