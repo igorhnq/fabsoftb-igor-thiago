@@ -18,6 +18,7 @@ export default function Products() {
             </div>
             <h3>Buscando por: <span>Valor do select</span></h3>
             <ProductCarousel />
+            <ProductCarousel />
         </div>
     );
 }

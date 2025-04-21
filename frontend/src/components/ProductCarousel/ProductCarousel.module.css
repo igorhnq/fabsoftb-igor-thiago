@@ -2,7 +2,7 @@ h4 {
 	font-size: 2rem;
 	border-bottom: 1px solid var(--black-bean);
 	display: inline-block;
-	margin: 0 0 1rem 4rem;
+	margin: 2rem 0 1rem 4rem;
 }
 
 .carouselWrapper {
