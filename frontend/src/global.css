@@ -1,0 +1,12 @@
+:root {
+    --vanilla-cream: #FEFAE0;
+    --matcha-leaf: #6B705C;
+    --black-bean: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
