@@ -27,7 +27,7 @@ export default function ProductDetails() {
                             visual e pelo sabor que derrete na boca.
                         </p>
                     </div>
-                    <div className={styles.productDetailsInfoHeader}>
+                    <div className={styles.teste3}>
                         <div className={styles.productDetailsWarning}>
                             <p>
                                 Atenção! Para incluir ou retirar algum ingrediente vá na opção “Complementos”.
@@ -36,6 +36,14 @@ export default function ProductDetails() {
                         <button className={styles.productDetailPurchaseButton}>
                             Comprar
                         </button>
+                    </div>
+                    <div className={styles.productDetailsSelectContainer}>
+                        <div className={styles.productDetailsSelect}>
+                            <p>Sabores</p>
+                        </div>
+                        <div className={styles.productDetailsSelect}>
+                            <p>Tamanho</p>
+                        </div>
                     </div>
                 </div>
             </div>
