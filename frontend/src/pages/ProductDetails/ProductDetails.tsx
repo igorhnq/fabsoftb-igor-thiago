@@ -2,6 +2,7 @@ import { CaretDown, CaretRight } from "@phosphor-icons/react";
 import styles from "./ProductDetails.module.css";
 import Footer from "../../components/Footer/Footer";
 import ProductImage from "../../components/ProductImage/ProductImage";
+import ProductDetailsSelect from "../../components/Input/Select/ProductDetailsSelect";
 
 export default function ProductDetails() {
     return (
@@ -42,14 +43,8 @@ export default function ProductDetails() {
                             </button>
                         </div>
                         <div className={styles.productDetailsSelectContainer}>
-                            <div className={styles.productDetailsSelect}>
-                                <p>Sabores</p>
-                                <CaretDown size={24} />
-                            </div>
-                            <div className={styles.productDetailsSelect}>
-                                <p>Tamanho</p>
-                                <CaretDown size={24} />
-                            </div>
+                           <ProductDetailsSelect defaultValue={"Sabores"} />
+                           <ProductDetailsSelect defaultValue={"Tamanho"} />
                             <button className={styles.productDetailPurchaseButton}>
                                 Adicionar ao <br></br>carrinho
                             </button>
@@ -68,10 +63,7 @@ export default function ProductDetails() {
                             </div>
                         </div>
                         <div className={styles.productDetailsExtrasContainer}>
-                            <div className={styles.productDetailsSelect}>
-                                <p>Complementos</p>
-                                <CaretRight size={24} />
-                            </div>
+                            <ProductDetailsSelect defaultValue={"Complementos"} />
                             <ul className={styles.productDetailsChoosenExtras}>
                                 <li>
                                     <CaretRight />
