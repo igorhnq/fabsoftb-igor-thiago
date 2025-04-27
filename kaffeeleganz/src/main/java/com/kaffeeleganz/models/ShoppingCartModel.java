@@ -1,4 +1,4 @@
-package com.kaffeeleganz.model;
+package com.kaffeeleganz.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,22 +9,19 @@ import java.util.Date;
 
 @Data
 @Entity
-public class OrderModel {
+public class ShoppingCartModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date orderDate;
-    private Float totalAmount;
-    private Status status;
-    public enum Status {
-        PENDING, COMPLETED, CANCELLED
-    }
-    // cliente?
-    // lista de cafeterias?
-    // lista de produtos?
-    // tipo de pagamento?
+    private Integer quantity;
+    private Float totalPrice;
+    private Date addedDate; // será que precisa?
+    // lista de itens do carrinho?
 
     // métodos:
+    // atualizar quantidade;
+    // remover item;
+    // ver detalhes;
+    // prosseguir para pagamento;
     // calcular total;
-    // atualizar status;
 }

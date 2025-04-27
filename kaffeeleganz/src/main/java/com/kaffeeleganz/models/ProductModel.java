@@ -1,4 +1,4 @@
-package com.kaffeeleganz.model;
+package com.kaffeeleganz.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

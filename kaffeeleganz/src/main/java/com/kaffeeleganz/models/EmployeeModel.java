@@ -1,4 +1,4 @@
-package com.kaffeeleganz.model;
+package com.kaffeeleganz.models;
 
 import jakarta.persistence.Entity;
 import lombok.Data;
@@ -7,7 +7,10 @@ import lombok.EqualsAndHashCode;
 @Data
 @Entity
 @EqualsAndHashCode(callSuper = true)
-public class AdministratorModel extends AppUserModel {
+public class EmployeeModel extends AppUserModel {
+    private String phone;
+    private String cpf;
+
     // métodos:
-    // receber avisos dos franqueadores?
+    // gerenciar estoque
 }
