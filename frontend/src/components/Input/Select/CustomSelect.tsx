@@ -5,7 +5,7 @@ import styles from './CustomSelect.module.css';
 
 const options = [
     {
-        value: 'all',
+        value: 'Ver todos',
         label: (
             <div className={styles.option}>
                 <GridFour size={18} weight="fill" />
@@ -14,7 +14,7 @@ const options = [
         )
     },
     {
-        value: 'sales',
+        value: 'Promoções',
         label: (
             <div className={styles.option}>
                 <SealPercent size={18} weight="fill" />
@@ -23,7 +23,7 @@ const options = [
         )
     },
     {
-        value: 'drinks',
+        value: 'Bebidas',
         label: (
             <div className={styles.option}>
                 <Coffee size={18} weight="fill" />
@@ -32,7 +32,7 @@ const options = [
         )
     },
 	{
-        value: 'snacks',
+        value: 'Salgados',
         label: (
             <div className={styles.option}>
                 <Pizza size={18} weight="fill" />
@@ -41,7 +41,7 @@ const options = [
         )
     },
 	{
-        value: 'sweets',
+        value: 'Doces',
         label: (
             <div className={styles.option}>
                 <IceCream size={18} weight="fill" />
@@ -50,7 +50,7 @@ const options = [
         )
     },
 	{
-        value: 'dishes',
+        value: 'Pratos de balcão',
         label: (
             <div className={styles.option}>
                 <ForkKnife size={18} weight="fill" />
@@ -60,7 +60,7 @@ const options = [
     }
 ];
 
-export default function CustomSelect() {
+export default function CustomSelect({ onChange }: { onChange: (selectedOption: any) => void }) {
     return (
         <Select
             className={styles.selectContainer}
@@ -68,6 +68,7 @@ export default function CustomSelect() {
             options={options}
             defaultValue={options[0]}
             isSearchable={false}
+            onChange={onChange}
             styles={{
                 control: (base) => ({
                     ...base,
