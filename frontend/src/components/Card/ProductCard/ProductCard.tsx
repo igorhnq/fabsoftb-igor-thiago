@@ -1,4 +1,5 @@
 import styles from "./ProductCard.module.css";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
     showDetails?: boolean;
@@ -6,16 +7,23 @@ interface ProductCardProps {
     height: string | number;
     name: string;
     price: number;
+    id: number;
 }
 
-export default function ProductCard({ showDetails = true, width, height, name, price }: ProductCardProps) {
+export default function ProductCard({ showDetails = true, width, height, name, price, id }: ProductCardProps) {
     const cardStyles = {
         width,
         height,
     };
 
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/product/${id}`);
+    };
+
     return (
-        <div className={styles.productCard} style={cardStyles}>
+        <div className={styles.productCard} style={cardStyles} onClick={handleClick}>
             {showDetails && (
                 <>
                     <div className={styles.priceTag}>R$ {price.toFixed(2)}</div>

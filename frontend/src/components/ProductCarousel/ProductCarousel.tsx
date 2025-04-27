@@ -40,7 +40,8 @@ export default function ProductCarousel({ title, category }: ProductCarouselProp
         }
     }, [products]);
 
-    const filteredProducts = products.filter(product => product.category === category);
+    const filteredProducts = products
+        .filter(product => product.category === category && product.id !== undefined);
 
     return (
         <div>
@@ -57,6 +58,7 @@ export default function ProductCarousel({ title, category }: ProductCarouselProp
                         {filteredProducts.map((product) => (
                             <div key={product.id} className="keen-slider__slide">
                                 <ProductCard 
+                                    id={product.id}
                                     name={product.name}
                                     price={product.price}
                                     width="185px" 

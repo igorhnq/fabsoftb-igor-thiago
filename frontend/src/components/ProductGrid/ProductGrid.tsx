@@ -39,6 +39,7 @@ export default function ProductGrid({ category, searchTerm }: ProductGridProps) 
             {products.length > 0 ? (
                 products.map(product => (
                     <ProductCard 
+                        id={product.id!}
                         key={product.id}
                         width="185px" 
                         height="200px" 
