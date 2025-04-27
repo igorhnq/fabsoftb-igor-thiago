@@ -1,0 +1,8 @@
+.productDescription {
+    border: 1px solid var(--black-bean);
+    padding: 0.6rem;
+    border-radius: 1rem;
+    width: 35rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
