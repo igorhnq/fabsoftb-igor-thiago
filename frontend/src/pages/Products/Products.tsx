@@ -18,11 +18,11 @@ export default function Products() {
                     </div>
                 </div>
                 <h3>Buscando por: <span>Valor do select</span></h3>
-                <ProductCarousel title="Promoções" />
-                <ProductCarousel title="Bebidas" />
-                <ProductCarousel title="Salgados" />
-                <ProductCarousel title="Doces" />
-                <ProductCarousel title="Pratos de balcão" />
+                <ProductCarousel title="Promoções" category="Promoções" />
+                <ProductCarousel title="Bebidas" category="Bebidas" />
+                <ProductCarousel title="Salgados" category="Salgados" />
+                <ProductCarousel title="Doces" category="Doces" />
+                <ProductCarousel title="Pratos de balcão" category="Pratos de balcão" />
             </div>
             <Footer />
         </div>

@@ -8,7 +8,12 @@ import { getAllProducts, ProductModel } from "../../services/productService";
 import "keen-slider/keen-slider.min.css";
 import styles from "./ProductCarousel.module.css";
 
-export default function ProductCarousel({ title }: { title: string }) {
+interface ProductCarouselProps {
+    title: string;
+    category: string;
+}
+
+export default function ProductCarousel({ title, category }: ProductCarouselProps) {
     const [products, setProducts] = useState<ProductModel[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [sliderRef, instanceRef] = useKeenSlider({
@@ -35,6 +40,8 @@ export default function ProductCarousel({ title }: { title: string }) {
         }
     }, [products]);
 
+    const filteredProducts = products.filter(product => product.category === category);
+
     return (
         <div>
             <div className={styles.carouselHeader}>
@@ -48,7 +55,7 @@ export default function ProductCarousel({ title }: { title: string }) {
                     </button>
 
                     <div ref={sliderRef} className="keen-slider">
-                        {products.map((product) => (
+                        {filteredProducts.map((product) => (
                             <div key={product.id} className="keen-slider__slide">
                                 <ProductCard 
                                     name={product.name}
