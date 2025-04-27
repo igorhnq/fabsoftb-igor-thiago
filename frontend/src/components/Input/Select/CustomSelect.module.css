@@ -1,12 +1,11 @@
 .selectContainer {
-    width: 250px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-  }
-  
-  .option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
+	width: 250px;
+	font-family: 'Poppins', sans-serif;
+	font-size: 16px;
+}
+
+.option {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
