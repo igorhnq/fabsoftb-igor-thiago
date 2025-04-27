@@ -9,9 +9,14 @@ import ProductGrid from "../../components/ProductGrid/ProductGrid";
 
 export default function Products() {
     const [selectedCategory, setSelectedCategory] = useState('Ver todos');
+    const [searchTerm, setSearchTerm] = useState('');
 
     const handleCategoryChange = (selectedOption: any) => {
         setSelectedCategory(selectedOption.value);
+    };
+
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
     };
 
     return (
@@ -22,11 +27,18 @@ export default function Products() {
                     <CustomSelect onChange={handleCategoryChange} />
                     <div className={styles.searchContainer}>
                         <MagnifyingGlass size={18} weight="bold" />
-                        <input type="text" placeholder="Buscar por Produto" />
+                        <input 
+                            type="text" 
+                            placeholder="Buscar por Produto" 
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                        />
                     </div>
                 </div>
                 <h3>Buscando por: <span>{selectedCategory}</span></h3>
-                {selectedCategory === 'Ver todos' ? (
+                {searchTerm ? (
+                    <ProductGrid searchTerm={searchTerm} />
+                ) : selectedCategory === 'Ver todos' ? (
                     <>
                         <ProductCarousel title="Promoções" category="Promoções" />
                         <ProductCarousel title="Bebidas" category="Bebidas" />
