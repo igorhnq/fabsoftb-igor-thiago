@@ -1,8 +1,8 @@
-import { CaretDown, CaretRight } from "@phosphor-icons/react";
+import { CaretRight } from "@phosphor-icons/react";
 import styles from "./ProductDetails.module.css";
 import Footer from "../../components/Footer/Footer";
-import ProductImage from "../../components/ProductImage/ProductImage";
 import ProductDetailsSelect from "../../components/Input/Select/ProductDetailsSelect";
+import ProductCard from "../../components/Card/ProductCard/ProductCard";
 
 export default function ProductDetails() {
     return (
@@ -10,12 +10,12 @@ export default function ProductDetails() {
             <div className={styles.productDetails}>
                 <div className={styles.productDetailsContainer}>
                     <div className={styles.productDetailsImageContainer}>
-                        <ProductImage width={"500px"} height={"300px"} />
+                        <ProductCard showDetails={false} width={"500px"} height={"300px"} />
                         <div className={styles.productDetailsImageRow}>
-                            <ProductImage width={"100px"} height={"100px"} />
-                            <ProductImage width={"100px"} height={"100px"} />
-                            <ProductImage width={"100px"} height={"100px"} />
-                            <ProductImage width={"100px"} height={"100px"} />
+                           <ProductCard showDetails={false} width={"100px"} height={"100px"} />
+                           <ProductCard showDetails={false} width={"100px"} height={"100px"} />
+                           <ProductCard showDetails={false} width={"100px"} height={"100px"} />
+                           <ProductCard showDetails={false} width={"100px"} height={"100px"} />
                         </div>
                     </div>
                     <div className={styles.productDetailsInfo}>
