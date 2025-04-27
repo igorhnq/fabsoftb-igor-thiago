@@ -1,0 +1,29 @@
+package com.kaffeeleganz.controllers;
+
+import com.kaffeeleganz.models.ProductModel;
+import com.kaffeeleganz.services.ProductService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/v1/products")
+@CrossOrigin(origins = "*")
+public class ProductController {
+
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
+    @GetMapping
+    public List<ProductModel> getAllProducts() {
+        return productService.findAllProducts();
+    }
+
+    @PostMapping
+    public ProductModel createProduct(@RequestBody ProductModel product) {
+        return productService.saveProduct(product);
+    }
+}
