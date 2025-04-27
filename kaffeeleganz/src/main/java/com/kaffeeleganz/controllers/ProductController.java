@@ -22,6 +22,12 @@ public class ProductController {
         return productService.findAllProducts();
     }
 
+    @GetMapping("/{id}")
+    public ProductModel getProductById(@PathVariable Integer id) {
+        return productService.findProductById(id);
+    }
+
+
     @PostMapping
     public ProductModel createProduct(@RequestBody ProductModel product) {
         return productService.saveProduct(product);

@@ -19,6 +19,11 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public ProductModel findProductById(Integer id) {
+        return productRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Produto não encontrado com id: " + id));
+    }
+
     public ProductModel saveProduct(ProductModel product) {
         return productRepository.save(product);
     }
