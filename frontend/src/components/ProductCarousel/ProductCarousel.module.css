@@ -40,4 +40,9 @@ h4 {
 .arrowRight {
 	margin-left: 10px;
 }
-  
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

@@ -7,6 +7,7 @@ import { getAllProducts, ProductModel } from "../../services/productService";
 
 import "keen-slider/keen-slider.min.css";
 import styles from "./ProductCarousel.module.css";
+import LoadingProductCard from "../Card/ProductCard/LoadingProductCard";
 
 interface ProductCarouselProps {
     title: string;
@@ -72,7 +73,29 @@ export default function ProductCarousel({ title, category }: ProductCarouselProp
                     </button>
                 </div>
             ) : (
-                <div>Carregando...</div>
+                <div className={styles.carouselWrapper}>
+                    <button onClick={() => instanceRef.current?.prev()} className={styles.arrowLeft}>
+                        <CaretLeft size={32} weight="bold" color="var(--matcha-moss)" />
+                    </button>
+
+                    <div ref={sliderRef} className="keen-slider">
+                        <div className={styles.loadingContainer}>
+                            <LoadingProductCard/>
+                            <LoadingProductCard/>
+                            <LoadingProductCard/>
+                            <LoadingProductCard/>
+                            <LoadingProductCard/>
+                            <LoadingProductCard/>
+                            <LoadingProductCard/>
+                            <LoadingProductCard/>
+                            <LoadingProductCard/>
+                        </div>
+                    </div>
+
+                    <button onClick={() => instanceRef.current?.next()} className={styles.arrowRight}>
+                        <CaretRight size={32} weight="bold" color="var(--matcha-moss)" />
+                    </button>
+                </div>
             )}
         </div>
     );
