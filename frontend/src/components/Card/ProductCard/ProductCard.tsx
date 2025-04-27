@@ -4,9 +4,11 @@ interface ProductCardProps {
     showDetails?: boolean;
     width: string | number;
     height: string | number;
+    name: string;
+    price: number;
 }
 
-export default function ProductCard({ showDetails = true, width, height }: ProductCardProps) {
+export default function ProductCard({ showDetails = true, width, height, name, price }: ProductCardProps) {
     const cardStyles = {
         width,
         height,
@@ -16,8 +18,8 @@ export default function ProductCard({ showDetails = true, width, height }: Produ
         <div className={styles.productCard} style={cardStyles}>
             {showDetails && (
                 <>
-                    <div className={styles.priceTag}>R$ 00,00</div>
-                    <div className={styles.productName}>Café Americano</div>
+                    <div className={styles.priceTag}>R$ {price.toFixed(2)}</div>
+                    <div className={styles.productName}>{name}</div>
                 </>
             )}
         </div>
