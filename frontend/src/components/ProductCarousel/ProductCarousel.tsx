@@ -47,7 +47,6 @@ export default function ProductCarousel({ title, category }: ProductCarouselProp
         <div>
             <div className={styles.carouselHeader}>
                 <h4>{title}</h4>
-                <CustomSelect />
             </div>
             {isLoaded ? (
                 <div className={styles.carouselWrapper}>
