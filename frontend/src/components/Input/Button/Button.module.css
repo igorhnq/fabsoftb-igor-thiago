@@ -1,0 +1,15 @@
+.button {
+    background-color: var(--matcha-moss);
+    color: var(--vanilla-cream);
+    border: none;
+    border-radius: 1rem;
+    padding: 0.3rem 1rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+    max-width: 14rem;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
