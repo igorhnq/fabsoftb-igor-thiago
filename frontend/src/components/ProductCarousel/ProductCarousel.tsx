@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { useKeenSlider } from "keen-slider/react";
 import ProductCard from "../Card/ProductCard/ProductCard";
-import CustomSelect from "../Input/Select/CustomSelect";
 import { getAllProducts, ProductModel } from "../../services/productService";
 
 import "keen-slider/keen-slider.min.css";
