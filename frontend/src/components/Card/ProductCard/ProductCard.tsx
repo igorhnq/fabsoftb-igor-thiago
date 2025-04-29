@@ -5,8 +5,8 @@ interface ProductCardProps {
     showDetails?: boolean;
     width: string | number;
     height: string | number;
-    name: string;
-    price: number;
+    name?: string;
+    price?: number;
     id?: number;
 }
 
@@ -26,8 +26,8 @@ export default function ProductCard({ showDetails = true, width, height, name, p
         <div className={styles.productCard} style={cardStyles} onClick={handleClick}>
             {showDetails && (
                 <>
-                    <div className={styles.priceTag}>R$ {price.toFixed(2)}</div>
-                    <div className={styles.productName}>{name}</div>
+                    <div className={styles.priceTag}>R$ {price?.toFixed(2) || ''}</div>
+                    <div className={styles.productName}>{name || ''}</div>
                 </>
             )}
         </div>
