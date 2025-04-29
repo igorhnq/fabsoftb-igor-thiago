@@ -7,7 +7,7 @@ interface ProductCardProps {
     height: string | number;
     name: string;
     price: number;
-    id: number;
+    id?: number;
 }
 
 export default function ProductCard({ showDetails = true, width, height, name, price, id }: ProductCardProps) {
