@@ -1,0 +1,27 @@
+.registerContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+.authFormMargin {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('src/assets/auth_background.svg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
+    z-index: -1;
+}
