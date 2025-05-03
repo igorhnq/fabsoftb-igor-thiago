@@ -6,6 +6,7 @@ import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
 import Footer from "../../components/Footer/Footer";
 import styles from "./Products.module.css";
 import ProductGrid from "../../components/ProductGrid/ProductGrid";
+import Header from "../../components/Header/Header";
 
 export default function Products() {
     const [selectedCategory, setSelectedCategory] = useState('Ver todos');
@@ -21,6 +22,7 @@ export default function Products() {
 
     return (
         <div>
+            <Header />
             <div className={styles.productsContainer}>
                 <Banner />
                 <div className={styles.inputContainer}>
