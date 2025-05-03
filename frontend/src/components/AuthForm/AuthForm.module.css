@@ -1,0 +1,81 @@
+.authFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+}
+
+.authFormContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px solid var(--matcha-leaf);
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--wild-drip);
+    width: 100%;
+    max-width: 500px;
+    
+}
+
+.authFormContent h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    background-color: var(--misty-milk);
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.authFormInputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.authFormInputContainer input {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1.2rem;
+    background-color: var(--misty-milk);
+    font-weight: 400;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.authFormInputIcon {
+    background-color: var(--herbal-cream);
+    padding: 0.2rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+.authFormForgotPassword {
+    text-decoration: none;
+    color: var(--misty-milk);
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: inline-block;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: -0.4rem;
+}
+
+.authFormButtonContainer {
+    display: flex;
+    gap: 1rem;
+    border-top: 2px solid var(--misty-milk);
+    padding-top: 1rem;
+    width: 100%;
+    justify-content: center;
+}

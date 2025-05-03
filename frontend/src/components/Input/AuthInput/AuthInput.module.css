@@ -1,0 +1,26 @@
+.authFormInputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.authFormInputContainer input {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1.2rem;
+    background-color: var(--misty-milk);
+    font-weight: 400;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    width: 100%;
+}
+
+.authFormInputIcon {
+    background-color: var(--herbal-cream);
+    padding: 0.2rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
