@@ -14,14 +14,14 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Set up JDK 17 (ou 21, se disponível) com a distribuição correta
-      - name: Set up JDK 17
+      # Set up JDK 21 (em vez de 17)
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
-          java-version: '17'  # Ou '21', se preferir
-          distribution: 'temurin'  # Agora 'temurin' em vez de 'adoptopenjdk'
-        
-      # Verificar a versão do JDK para garantir que foi instalado corretamente
+          java-version: '21'  # Usando Java 21
+          distribution: 'temurin'  # Usando a distribuição Temurin, que suporta o Java 21
+
+      # Verificar a versão do JDK
       - name: Check Java Version
         run: java -version  # Isso ajuda a garantir que o JDK foi configurado corretamente
 
