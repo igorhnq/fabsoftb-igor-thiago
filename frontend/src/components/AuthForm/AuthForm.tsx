@@ -2,6 +2,7 @@ import AuthInput from "../Input/AuthInput/AuthInput";
 import Button from "../Input/Button/Button";
 import { EnvelopeSimple, Lock, IdentificationCard, User, LockKey } from "@phosphor-icons/react";
 import React, { useState } from "react";
+import { register, login, UserModel, LoginRequest } from "../../services/authService";
 
 import styles from "./AuthForm.module.css";
 
@@ -23,19 +24,9 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
             return;
         }
         try {
-            const response = await fetch("http://localhost:8080/api/v1/auth/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ name, email, cpf, password })
-            });
-            if (response.ok) {
-                alert("Cadastro realizado com sucesso! Faça login para continuar.");
-            } else {
-                const error = await response.text();
-                alert("Erro ao cadastrar: " + error);
-            }
+            const userData: UserModel = { name, email, cpf, password };
+            await register(userData);
+            alert("Cadastro realizado com sucesso! Faça login para continuar.");
         } catch (error) {
             alert("Erro ao cadastrar!");
         }
@@ -44,22 +35,12 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:8080/api/v1/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ email, password })
-            });
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem("token", data.token);
-                alert("Login realizado com sucesso!");
-            } else {
-                alert("Email ou senha inválidos!");
-            }
+            const credentials: LoginRequest = { email, password };
+            const response = await login(credentials);
+            localStorage.setItem("token", response.token);
+            alert("Login realizado com sucesso!");
         } catch (error) {
-            alert("Erro ao fazer login!");
+            alert("Email ou senha inválidos!");
         }
     };
 
