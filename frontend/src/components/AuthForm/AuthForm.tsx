@@ -3,6 +3,7 @@ import Button from "../Input/Button/Button";
 import { EnvelopeSimple, Lock, IdentificationCard, User, LockKey } from "@phosphor-icons/react";
 import React, { useState } from "react";
 import { register, login, UserModel, LoginRequest } from "../../services/authService";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./AuthForm.module.css";
 
@@ -11,6 +12,7 @@ interface AuthFormProps {
 }
 
 export default function AuthForm({ isLoginPage }: AuthFormProps) {
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [cpf, setCpf] = useState("");
@@ -27,6 +29,7 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
             const userData: UserModel = { name, email, cpf, password };
             await register(userData);
             alert("Cadastro realizado com sucesso! Faça login para continuar.");
+            navigate('/login');
         } catch (error) {
             alert("Erro ao cadastrar!");
         }
@@ -39,9 +42,18 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
             const response = await login(credentials);
             localStorage.setItem("token", response.token);
             alert("Login realizado com sucesso!");
+            navigate('/products');
         } catch (error) {
             alert("Email ou senha inválidos!");
         }
+    };
+
+    const handleNavigateToRegister = () => {
+        navigate('/register');
+    };
+
+    const handleNavigateToLogin = () => {
+        navigate('/login');
     };
 
     return (
@@ -70,6 +82,8 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
                                 isTransparent={true}
                                 color="--misty-milk"
                                 fontWeight="600"
+                                onClick={handleNavigateToRegister}
+                                type="button"
                             />
                             <Button
                                 label={"Confirmar"}
@@ -120,6 +134,7 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
                                 backgroundColor="--herbal-cream"
                                 color="--black-bean"
                                 fontWeight="600"
+                                onClick={handleNavigateToLogin}
                                 type="button"
                             />
                             <Button
