@@ -9,30 +9,41 @@ import styles from "./ProductCarousel.module.css";
 import LoadingProductCard from "../Card/ProductCard/LoadingProductCard";
 
 interface ProductCarouselProps {
-    title: string;
+    title?: string;
     category: string;
+    products?: ProductModel[];
+    slidesPerView?: number;
 }
 
-export default function ProductCarousel({ title, category }: ProductCarouselProps) {
+export default function ProductCarousel({ 
+    title, 
+    category, 
+    products: propProducts,
+    slidesPerView = 5
+}: ProductCarouselProps) {
     const [products, setProducts] = useState<ProductModel[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [sliderRef, instanceRef] = useKeenSlider({
-        slides: { perView: 5, spacing: 20 },
+        slides: { perView: slidesPerView, spacing: 20 },
     });
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const productsData = await getAllProducts();
-                setProducts(productsData);
-                setIsLoaded(true);
-            } catch (error) {
-                console.error("Erro ao buscar produtos:", error);
-            }
-        };
-
-        fetchProducts();
-    }, []);
+        if (propProducts) {
+            setProducts(propProducts);
+            setIsLoaded(true);
+        } else {
+            const fetchProducts = async () => {
+                try {
+                    const productsData = await getAllProducts();
+                    setProducts(productsData);
+                    setIsLoaded(true);
+                } catch (error) {
+                    console.error("Erro ao buscar produtos:", error);
+                }
+            };
+            fetchProducts();
+        }
+    }, [propProducts]);
 
     useEffect(() => {
         if (products.length > 0) {
