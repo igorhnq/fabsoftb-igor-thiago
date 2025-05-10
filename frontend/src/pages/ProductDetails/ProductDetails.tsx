@@ -7,7 +7,7 @@ import ProductCard from "../../components/Card/ProductCard/ProductCard";
 import ProductDescription from "../../components/ProductDescription/ProductDescription";
 import Button from "../../components/Input/Button/Button";
 import QuantitySelector from "../../components/Input/QuantitySelector/QuantitySelector";
-
+import Header from '../../components/Header/Header';
 export default function ProductDetails() {
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductModel | null>(null);
@@ -31,6 +31,7 @@ export default function ProductDetails() {
 
     return (
         <div className={styles.productDetailsWrapper}>
+            <Header />
             <div className={styles.productDetailsContainer}> 
                 <div className={styles.productDetailsContentContainer}>
                     <div className={styles.productDetailsImageContainer}>
