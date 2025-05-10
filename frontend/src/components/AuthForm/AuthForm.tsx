@@ -41,19 +41,46 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
         }
     };
 
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:8080/api/v1/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, password })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem("token", data.token);
+                alert("Login realizado com sucesso!");
+            } else {
+                alert("Email ou senha inválidos!");
+            }
+        } catch (error) {
+            alert("Erro ao fazer login!");
+        }
+    };
+
     return (
         <div className={styles.authFormContainer}>
             <div className={styles.authFormContent}>
                 <h1>{isLoginPage ? "Login" : "Cadastro"}</h1>
                 {isLoginPage ? (
-                    <>
+                    <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }} onSubmit={handleLogin}>
                         <AuthInput 
                             icon={<EnvelopeSimple size={30} weight="bold" color="var(--black-bean)" />} 
-                            placeholder="Digite o seu email" 
+                            placeholder="Digite o seu email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
                         />
                         <AuthInput 
                             icon={<Lock size={30} weight="bold" color="var(--black-bean)" />} 
-                            placeholder="Digite a sua senha" 
+                            placeholder="Digite a sua senha"
+                            type="password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
                         />
                         <a className={styles.authFormForgotPassword} href="#">Esqueci minha senha...</a>
                         <div className={styles.authFormButtonContainer}>
@@ -68,9 +95,10 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
                                 backgroundColor="--herbal-cream"
                                 color="--black-bean"
                                 fontWeight="600"
+                                type="submit"
                             />
                         </div>
-                    </>
+                    </form>
                 ) : (
                     <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }} onSubmit={handleRegister}>
                         <AuthInput 
