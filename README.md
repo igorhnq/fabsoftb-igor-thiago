@@ -28,13 +28,13 @@ Nesse contexto, é importante que o site seja simples e intuitivo, pois quero qu
 
 Por fim, para destaque do sistema tive algumas ideias como que ele tenha algumas opções extras, como que ele tenha um mapa com todas as nossas lojas na região. Por fim, quero que apenas eu e os gerentes cadastrados tenham acesso às informações de vendas dos produtos, como por alguns gráficos que mostre os produtos principais que compram e em quais lojas, para terem relatórios que ajudem a melhorar o controle dos meus negócios. 
 
-### Livro Eng Software Moderna: 📚
-[Eng. Soft Moderna - Requisitos](https://engsoftmoderna.info/cap3.html)
-
-## Link para o Documento Completo: 📝
+#### Link para o Documento Completo: 📝
 https://docs.google.com/document/d/1mlKJNEdMDmfMa5wgDe_pq0R2ixOSs17HwRon2fZJ-uE/edit?tab=t.0
 
 ## Link para a apresentação do Figma: 🎨
 https://www.figma.com/proto/a7vpepn5UUbwYjU8rQmaRf/Kaffe?node-id=5-9&starting-point-node-id=251%3A416&scaling=scale-down-width&content-scaling=fixed
 
 Observação: eu vou precisar que tu envie a solicitação para conseguir visualizar caso queira verificar o protótipo. 
+
+### Livro Eng Software Moderna: 📚
+[Eng. Soft Moderna - Requisitos](https://engsoftmoderna.info/cap3.html)
