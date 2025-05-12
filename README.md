@@ -36,4 +36,5 @@ https://docs.google.com/document/d/1mlKJNEdMDmfMa5wgDe_pq0R2ixOSs17HwRon2fZJ-uE/
 
 ## Link para a apresentação do Figma: 🎨
 https://www.figma.com/proto/a7vpepn5UUbwYjU8rQmaRf/Kaffe?node-id=5-9&starting-point-node-id=251%3A416&scaling=scale-down-width&content-scaling=fixed
+
 Observação: eu vou precisar que tu envie a solicitação para conseguir visualizar caso queira verificar o protótipo. 
