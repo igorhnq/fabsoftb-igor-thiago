@@ -31,10 +31,13 @@ Por fim, para destaque do sistema tive algumas ideias como que ele tenha algumas
 #### Link para o Documento Completo: 📝
 https://docs.google.com/document/d/1mlKJNEdMDmfMa5wgDe_pq0R2ixOSs17HwRon2fZJ-uE/edit?tab=t.0
 
-## Link para a apresentação do Figma: 🎨
+
+#### Link para a apresentação do Figma: 🎨
 https://www.figma.com/proto/a7vpepn5UUbwYjU8rQmaRf/Kaffe?node-id=5-9&starting-point-node-id=251%3A416&scaling=scale-down-width&content-scaling=fixed
 
 Observação: eu vou precisar que tu envie a solicitação para conseguir visualizar caso queira verificar o protótipo. 
+
+---
 
 ### Livro Eng Software Moderna: 📚
 [Eng. Soft Moderna - Requisitos](https://engsoftmoderna.info/cap3.html)
