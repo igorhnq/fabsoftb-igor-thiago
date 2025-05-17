@@ -1,0 +1,9 @@
+.priceTag {
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: 1px solid var(--black-bean);
+    background-color: var(--matcha-moss);
+    border-radius: 1rem;
+    padding: 0.3rem;
+    font-weight: 900;
+}
