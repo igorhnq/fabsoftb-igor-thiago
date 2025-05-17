@@ -1,0 +1,56 @@
+.profileWrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.profileTitle {
+   background-color: var(--misty-milk);
+   display: inline-flex;
+   padding: 0.5rem;
+   border-radius: 0.5rem;
+   margin: 2rem;
+}
+
+.profileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.profileContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--misty-milk);
+}
+
+.profileDescription {
+    border: 1px solid var(--black-bean);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    min-width: 35rem;
+    min-height: 10rem;
+}
+
+.purchaseHistoryTitle {
+    border-bottom: 1px solid var(--black-bean);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.purchaseHistoryContainer {
+    width: 70%;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    max-height: 300px;
+}

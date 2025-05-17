@@ -4,6 +4,7 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Login from "./pages/Auth/Login/Login";
 import Register from './pages/Auth/Register/Register';
 import OrderReview from "./pages/OrderReview/OrderReview";
+import Profile from "./pages/Profile/Profile";
 
 import "./global.css";
 
@@ -16,6 +17,7 @@ export default function App() {
 				<Route path="/register" element={<Register />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/order-review" element={<OrderReview />} />
+				<Route path="/profile" element={<Profile />} />
 			</Routes>
 		</>
 	)
