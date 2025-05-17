@@ -1,0 +1,20 @@
+.orderCard {
+    border: 1px solid var(--black-bean);
+    border-radius: 1rem;
+    padding: 1rem;    
+}
+
+.orderCardTitle {
+    border-bottom: 1px solid var(--black-bean);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.orderCardInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    gap: 0.2rem;
+}
