@@ -3,7 +3,8 @@ import styles from "./OrderReview.module.css";
 import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
 import Button from "../../components/Input/Button/Button";
 import Footer from "../../components/Footer/Footer";
-// Mock de produtos para visualização
+import PriceTag from "../../components/PriceTag/PriceTag";
+
 const mockProducts = [
     { id: 1, name: "Café Expresso", price: 8.90, category: "cafe" },
     { id: 2, name: "Cappuccino", price: 12.90, category: "cafe" },
@@ -23,9 +24,10 @@ export default function OrderReview() {
                     <div className={styles.orderReviewContent}>
                         <div className={styles.orderReviewContentHeader}>
                             <h2>Itens</h2>
-                            <h2 className={styles.orderReviewContentHeaderPrice}>
-                                Total: R$ 44,00
-                            </h2>
+                            <PriceTag 
+                                price={44.00} 
+                                showTotalLabel={true} 
+                            />
                         </div>
                         <div className={styles.orderReviewContentItems}>
                             <ProductCarousel 

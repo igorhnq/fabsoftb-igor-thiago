@@ -8,6 +8,7 @@ import ProductDescription from "../../components/ProductDescription/ProductDescr
 import Button from "../../components/Input/Button/Button";
 import QuantitySelector from "../../components/Input/QuantitySelector/QuantitySelector";
 import Header from '../../components/Header/Header';
+import PriceTag from '../../components/PriceTag/PriceTag';
 export default function ProductDetails() {
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductModel | null>(null);
@@ -54,7 +55,7 @@ export default function ProductDetails() {
                     <div className={styles.productDetailsInfoContainer}>
                         <div className={styles.productDetailsHeader}>
                             <h2 className={styles.productDetailsTitle}>{product.name}</h2>
-                            <div className={styles.productsDetailsPrice}>R$ {product.price.toFixed(2)}</div>
+                            <PriceTag price={product.price} />
                         </div>
                         <ProductDescription description={product.description} />
                         <div className={styles.productDetailsBuySection}>
