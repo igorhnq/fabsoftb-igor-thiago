@@ -9,10 +9,14 @@ import Button from "../../components/Input/Button/Button";
 import QuantitySelector from "../../components/Input/QuantitySelector/QuantitySelector";
 import Header from '../../components/Header/Header';
 import PriceTag from '../../components/PriceTag/PriceTag';
+import { useCart } from '../../contexts/CartContext';
+
 export default function ProductDetails() {
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductModel | null>(null);
     const navigate = useNavigate();
+    const { addItem, items } = useCart();
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -26,6 +30,10 @@ export default function ProductDetails() {
 
         fetchProduct();
     }, [id]);
+
+    useEffect(() => {
+        console.log(items);
+    }, [items]);
 
     const handlePurchase = () => {
         if (!product) return;
@@ -41,6 +49,17 @@ export default function ProductDetails() {
                 ]
             }
         });
+    };
+
+    const handleAddToCart = () => {
+        if (!product) return;
+        addItem({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            category: product.category,
+            description: product.description
+        }, quantity);
     };
 
     if (!product) {
@@ -76,9 +95,18 @@ export default function ProductDetails() {
                         </div>
                         <ProductDescription description={product.description} />
                         <div className={styles.productDetailsBuySection}>
-                            <Button label="Comprar" onClick={handlePurchase} />
-                            <Button label="Adicionar ao carrinho" />
-                            <QuantitySelector />
+                            <Button 
+                                label="Comprar" 
+                                onClick={handlePurchase} 
+                            />
+                            <Button 
+                                label="Adicionar ao carrinho" 
+                                onClick={handleAddToCart} 
+                            />
+                            <QuantitySelector 
+                                value={quantity} 
+                                onChange={setQuantity} 
+                            />
                         </div>
                     </div>
                 </div>

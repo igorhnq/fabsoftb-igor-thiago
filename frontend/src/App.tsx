@@ -5,12 +5,13 @@ import Login from "./pages/Auth/Login/Login";
 import Register from './pages/Auth/Register/Register';
 import OrderReview from "./pages/OrderReview/OrderReview";
 import Profile from "./pages/Profile/Profile";
+import { CartProvider } from "./contexts/CartContext.tsx";
 
 import "./global.css";
 
 export default function App() {
 	return (
-		<>
+		<CartProvider>
 			<Routes>
 				<Route path="/products" element={<Products />} />
 				<Route path="/product/:id" element={<ProductDetails />} />
@@ -19,6 +20,6 @@ export default function App() {
 				<Route path="/order-review" element={<OrderReview />} />
 				<Route path="/profile" element={<Profile />} />
 			</Routes>
-		</>
+		</CartProvider>
 	)
 }
