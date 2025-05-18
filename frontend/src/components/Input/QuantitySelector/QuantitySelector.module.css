@@ -25,7 +25,7 @@
 .button {
     width: 32px;
     height: 32px;
-    background-color: #ddd;
+    background-color: var(--misty-milk);
     border: none;
     border-radius: 8px;
     font-size: 18px;
