@@ -32,4 +32,8 @@ public class AppUserService {
         }
         return Optional.empty();
     }
+
+    public Optional<AppUserModel> findByEmail(String email) {
+        return appUserRepository.findByEmail(email);
+    }
 }
