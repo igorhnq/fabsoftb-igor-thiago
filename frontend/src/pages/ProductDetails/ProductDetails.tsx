@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getProductById, ProductModel } from '../../services/productService';
 import styles from "./ProductDetails.module.css";
@@ -12,6 +12,7 @@ import PriceTag from '../../components/PriceTag/PriceTag';
 export default function ProductDetails() {
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<ProductModel | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -25,6 +26,22 @@ export default function ProductDetails() {
 
         fetchProduct();
     }, [id]);
+
+    const handlePurchase = () => {
+        if (!product) return;
+        navigate("/order-review", {
+            state: {
+                products: [
+                    {
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        category: product.category
+                    }
+                ]
+            }
+        });
+    };
 
     if (!product) {
         return <div>Carregando...</div>;
@@ -59,7 +76,7 @@ export default function ProductDetails() {
                         </div>
                         <ProductDescription description={product.description} />
                         <div className={styles.productDetailsBuySection}>
-                            <Button label="Comprar" />
+                            <Button label="Comprar" onClick={handlePurchase} />
                             <Button label="Adicionar ao carrinho" />
                             <QuantitySelector />
                         </div>
