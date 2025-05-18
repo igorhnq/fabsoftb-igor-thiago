@@ -4,17 +4,39 @@ import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
 import Button from "../../components/Input/Button/Button";
 import Footer from "../../components/Footer/Footer";
 import PriceTag from "../../components/PriceTag/PriceTag";
-
-const mockProducts = [
-    { id: 1, name: "Café Expresso", price: 8.90, category: "cafe" },
-    { id: 2, name: "Cappuccino", price: 12.90, category: "cafe" },
-    { id: 3, name: "Latte", price: 14.90, category: "cafe" },
-    { id: 1, name: "Café Expresso", price: 8.90, category: "cafe" },
-    { id: 2, name: "Cappuccino", price: 12.90, category: "cafe" },
-    { id: 3, name: "Latte", price: 14.90, category: "cafe" },
-];
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { createOrder } from "../../services/orderService";
 
 export default function OrderReview() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        if (location.state && location.state.products) {
+            setProducts(location.state.products);
+        } else {
+            navigate("/");
+        }
+    }, [location.state, navigate]);
+
+    const totalAmount = products.reduce((sum, prod) => sum + prod.price, 0);
+
+    const handleConfirmPurchase = async () => {
+        const order = {
+            totalAmount,
+            products: products.map(prod => ({ id: prod.id }))
+        };
+        try {
+            await createOrder(order);
+            alert("Pedido realizado com sucesso!");
+            navigate("/profile");
+        } catch (error) {
+            alert("Erro ao criar pedido");
+        }
+    };
+
     return (
         <>
             <Header />
@@ -25,14 +47,14 @@ export default function OrderReview() {
                         <div className={styles.orderReviewContentHeader}>
                             <h2>Itens</h2>
                             <PriceTag 
-                                price={44.00} 
+                                price={totalAmount} 
                                 showTotalLabel={true} 
                             />
                         </div>
                         <div className={styles.orderReviewContentItems}>
                             <ProductCarousel 
-                                category="cafe" 
-                                products={mockProducts}
+                                category=""
+                                products={products}
                                 slidesPerView={3}
                             />
                         </div>
@@ -49,6 +71,7 @@ export default function OrderReview() {
                                 color="--black-bean"
                                 fontWeight="600"
                                 type="submit"
+                                onClick={handleConfirmPurchase}
                             />
                         </div>
                     </div>
