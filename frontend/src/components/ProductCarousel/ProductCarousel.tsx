@@ -51,8 +51,9 @@ export default function ProductCarousel({
         }
     }, [products]);
 
-    const filteredProducts = products
-        .filter(product => product.category === category && product.id !== undefined);
+    const filteredProducts = category
+        ? products.filter(product => product.category === category && product.id !== undefined)
+        : products.filter(product => product.id !== undefined);
 
     return (
         <div>
