@@ -1,0 +1,97 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+  transition: right 0.3s;
+  z-index: 1001;
+  padding: 2rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--vanilla-cream);
+}
+
+.cartDrawerHeader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--black-bean);
+}
+
+.cartDrawerTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--latte-caramelo);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+.overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.closeBtn {
+  position: absolute;
+  left: 0;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartDrawerItem {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid var(--black-bean);
+    padding: 1rem 0;
+}
+
+.cartDrawerItemTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--black-bean);
+}
+
+.cartDrawerItemDescription {
+    max-width: 120px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.cartDrawerItemQuantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
