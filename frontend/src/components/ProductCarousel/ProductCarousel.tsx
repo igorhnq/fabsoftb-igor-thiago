@@ -8,10 +8,14 @@ import "keen-slider/keen-slider.min.css";
 import styles from "./ProductCarousel.module.css";
 import LoadingProductCard from "../Card/ProductCard/LoadingProductCard";
 
+interface ProductWithQuantity extends ProductModel {
+    quantity?: number;
+}
+
 interface ProductCarouselProps {
     title?: string;
     category: string;
-    products?: ProductModel[];
+    products?: ProductWithQuantity[];
     slidesPerView?: number;
     showQuantity?: boolean;
 }
@@ -23,7 +27,7 @@ export default function ProductCarousel({
     slidesPerView = 5,
     showQuantity = false
 }: ProductCarouselProps) {
-    const [products, setProducts] = useState<ProductModel[]>([]);
+    const [products, setProducts] = useState<ProductWithQuantity[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [sliderRef, instanceRef] = useKeenSlider({
         slides: { perView: slidesPerView, spacing: 20 },

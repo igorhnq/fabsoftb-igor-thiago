@@ -7,11 +7,16 @@ import PriceTag from "../../components/PriceTag/PriceTag";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { createOrder } from "../../services/orderService";
+import { ProductModel } from "../../services/productService";
+
+interface OrderProduct extends ProductModel {
+    quantity?: number;
+}
 
 export default function OrderReview() {
     const location = useLocation();
     const navigate = useNavigate();
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<OrderProduct[]>([]);
 
     useEffect(() => {
         if (location.state && location.state.products) {
@@ -26,10 +31,12 @@ export default function OrderReview() {
     const handleConfirmPurchase = async () => {
         const order = {
             totalAmount,
-            products: products.map(prod => ({ 
-                id: prod.id,
-                quantity: prod.quantity || 1
-            }))
+            products: products
+                .filter(prod => prod.id !== undefined)
+                .map(prod => ({ 
+                    id: prod.id!,
+                    quantity: prod.quantity || 1
+                }))
         };
         try {
             await createOrder(order);
