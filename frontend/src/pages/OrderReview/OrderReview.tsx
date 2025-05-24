@@ -21,12 +21,15 @@ export default function OrderReview() {
         }
     }, [location.state, navigate]);
 
-    const totalAmount = products.reduce((sum, prod) => sum + prod.price, 0);
+    const totalAmount = products.reduce((sum, prod) => sum + (prod.price * (prod.quantity || 1)), 0);
 
     const handleConfirmPurchase = async () => {
         const order = {
             totalAmount,
-            products: products.map(prod => ({ id: prod.id }))
+            products: products.map(prod => ({ 
+                id: prod.id,
+                quantity: prod.quantity || 1
+            }))
         };
         try {
             await createOrder(order);
@@ -56,6 +59,7 @@ export default function OrderReview() {
                                 category=""
                                 products={products}
                                 slidesPerView={3}
+                                showQuantity
                             />
                         </div>
                         <div className={styles.orderReviewContentFooter}>

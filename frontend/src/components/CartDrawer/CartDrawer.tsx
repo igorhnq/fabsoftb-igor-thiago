@@ -5,6 +5,7 @@ import styles from "./CartDrawer.module.css";
 import PriceTag from "../PriceTag/PriceTag";
 import Button from "../Input/Button/Button";
 import { useCart } from "../../contexts/CartContext";
+import { useNavigate } from "react-router-dom";
 
 interface CartDrawerProps {
   open: boolean;
@@ -14,6 +15,22 @@ interface CartDrawerProps {
 
 export default function CartDrawer({ open, onClose, children }: CartDrawerProps) {
     const { items, total, removeItem, updateQuantity } = useCart();
+    const navigate = useNavigate();
+
+    const handlePayment = () => {
+        navigate("/order-review", {
+            state: {
+                products: items.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    category: item.category,
+                    quantity: item.quantity
+                }))
+            }
+        });
+        onClose();
+    };
 
     return (
         <>
@@ -69,11 +86,14 @@ export default function CartDrawer({ open, onClose, children }: CartDrawerProps)
                     )}
                 </div>
                 <div className={styles.cartDrawerFooter}>
-                    <Button 
-                        label={`Pagar R$ ${total.toFixed(2)}`} 
-                        backgroundColor="var(--latte-caramelo)"
-                        color="var(--matcha-leaf)"
-                    />
+                    {items.length > 0 && (
+                        <Button 
+                            label={`Pagar R$ ${total.toFixed(2)}`} 
+                            backgroundColor="var(--latte-caramelo)"
+                            color="var(--matcha-leaf)"
+                            onClick={handlePayment}
+                        />
+                    )}
                 </div>
             </div>
         </>
