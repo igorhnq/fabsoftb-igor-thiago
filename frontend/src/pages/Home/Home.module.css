@@ -1,0 +1,16 @@
+.carouselMock {
+    width: 100%;
+    height: 350px;
+    background-color: black;
+    background-image: url('src/assets/home-page-carrousel-image.svg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.cardContainer {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
