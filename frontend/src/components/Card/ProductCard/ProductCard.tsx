@@ -8,9 +8,11 @@ interface ProductCardProps {
     name?: string;
     price?: number;
     id?: number;
+    showQuantity?: boolean;
+    quantity?: number;
 }
 
-export default function ProductCard({ showDetails = true, width, height, name, price, id }: ProductCardProps) {
+export default function ProductCard({ showDetails = true, width, height, name, price, id, showQuantity = false, quantity = 1 }: ProductCardProps) {
     const cardStyles = {
         width,
         height,
@@ -27,6 +29,7 @@ export default function ProductCard({ showDetails = true, width, height, name, p
             {showDetails && (
                 <>
                     <div className={styles.priceTag}>R$ {price?.toFixed(2) || ''}</div>
+                    {showQuantity && <div className={styles.itemQuantity}>{quantity}</div>}
                     <div className={styles.productName}>{name || ''}</div>
                 </>
             )}
