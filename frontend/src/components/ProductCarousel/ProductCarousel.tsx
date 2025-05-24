@@ -13,13 +13,15 @@ interface ProductCarouselProps {
     category: string;
     products?: ProductModel[];
     slidesPerView?: number;
+    showQuantity?: boolean;
 }
 
 export default function ProductCarousel({ 
     title, 
     category, 
     products: propProducts,
-    slidesPerView = 5
+    slidesPerView = 5,
+    showQuantity = false
 }: ProductCarouselProps) {
     const [products, setProducts] = useState<ProductModel[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -75,6 +77,8 @@ export default function ProductCarousel({
                                     price={product.price}
                                     width="185px" 
                                     height="200px"
+                                    showQuantity={showQuantity}
+                                    quantity={product.quantity}
                                 />
                             </div>
                         ))}
