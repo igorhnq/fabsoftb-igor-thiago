@@ -4,9 +4,13 @@ import styles from "./Footer.module.css";
 
 import logo from "../../assets/logo.svg";
 
-export default function Footer() {
+interface FooterProps {
+    disableMarginTop?: boolean;
+}
+
+export default function Footer({ disableMarginTop = false }: FooterProps) {
     return (
-        <footer className={styles.footer}>
+        <footer className={`${styles.footer} ${disableMarginTop ? styles.noMarginTop : ''}`}>
             <div className={styles.aboutUs}>
                 <ul className={styles.aboutUsList}>
                     <h5>Sobre Nós</h5>

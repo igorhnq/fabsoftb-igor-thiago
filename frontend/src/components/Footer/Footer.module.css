@@ -7,6 +7,10 @@ footer {
     gap: 3rem;
 }
 
+.noMarginTop {
+    margin-top: 0;
+}
+
 .aboutUs {
     display: flex;
     flex-direction: row;
