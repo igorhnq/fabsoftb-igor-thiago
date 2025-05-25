@@ -6,6 +6,7 @@ import Register from './pages/Auth/Register/Register';
 import OrderReview from "./pages/OrderReview/OrderReview";
 import Profile from "./pages/Profile/Profile";
 import Home from './pages/Home/Home';
+import About from './pages/About/About';
 import { CartProvider } from "./contexts/CartContext.tsx";
 
 import "./global.css";
@@ -21,6 +22,7 @@ export default function App() {
 				<Route path="/order-review" element={<OrderReview />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/home" element={<Home />} />
+				<Route path="/about" element={<About />} />
 			</Routes>
 		</CartProvider>
 	)
