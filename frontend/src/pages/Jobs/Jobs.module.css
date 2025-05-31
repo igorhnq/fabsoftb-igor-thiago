@@ -1,0 +1,50 @@
+.aboutContent {
+    display: flex;
+    gap: 7rem;
+}
+
+.sidebarImage {
+    background-image: url("src/assets/jobs-sidebar-image.svg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    width: 20%;
+    height: 730px;
+}
+
+.aboutDescription {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 40%;
+}
+
+.aboutTitle {
+    font-size: 2rem;
+}
+
+.aboutDescriptionText {
+    font-size: 1.1rem;
+}
+
+.aboutImage {
+    width: 333px;
+    height: 218px;
+    background-image: url("src/assets/about-image.svg");
+}
+
+.aboutImage2 {
+    width: 367px;
+    height: 224px;
+    background-image: url("src/assets/about-image-2.svg");
+}
+
+.aboutImageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    width: 35%;
+    margin-top: 2rem;
+    min-width: 500px;
+}
