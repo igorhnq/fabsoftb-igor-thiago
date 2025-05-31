@@ -1,6 +1,6 @@
 import AuthInput from "../Input/AuthInput/AuthInput";
 import Button from "../Input/Button/Button";
-import { EnvelopeSimple, Lock, IdentificationCard, User, LockKey } from "@phosphor-icons/react";
+import { EnvelopeSimple, Lock, IdentificationCard, User, LockKey, Phone, FilePdf } from "@phosphor-icons/react";
 import React, { useState } from "react";
 import { register, login, UserModel, LoginRequest } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
@@ -8,10 +8,11 @@ import { useNavigate } from "react-router-dom";
 import styles from "./AuthForm.module.css";
 
 interface AuthFormProps {
-    isLoginPage: boolean;
+    isLoginPage?: boolean;
+    isJobsPage?: boolean;
 }
 
-export default function AuthForm({ isLoginPage }: AuthFormProps) {
+export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormProps) {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -59,7 +60,7 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
     return (
         <div className={styles.authFormContainer}>
             <div className={styles.authFormContent}>
-                <h1>{isLoginPage ? "Login" : "Cadastro"}</h1>
+                <h1>{isLoginPage ? "Login" : isJobsPage ? "Envie o seu currículo!" : "Cadastro"}</h1>
                 {isLoginPage ? (
                     <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }} onSubmit={handleLogin}>
                         <AuthInput 
@@ -87,6 +88,43 @@ export default function AuthForm({ isLoginPage }: AuthFormProps) {
                             />
                             <Button
                                 label={"Confirmar"}
+                                backgroundColor="--herbal-cream"
+                                color="--black-bean"
+                                fontWeight="600"
+                                type="submit"
+                            />
+                        </div>
+                    </form>
+                ) : isJobsPage ? (
+                    <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }} onSubmit={handleRegister}>
+                        <AuthInput 
+                            icon={<User size={30} weight="bold" color="var(--black-bean)" />} 
+                            placeholder="Digite o seu nome"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                        />
+                        <AuthInput
+                            icon={<EnvelopeSimple size={30} weight="bold" color="var(--black-bean)" />} 
+                            placeholder="Digite o seu email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                        <AuthInput 
+                            icon={<Phone size={30} weight="fill" color="var(--black-bean)" />} 
+                            placeholder="Digite o seu telefone"
+                            value={cpf}
+                            onChange={e => setCpf(e.target.value)}
+                        />
+                        <AuthInput 
+                            icon={<FilePdf size={30} weight="bold" color="var(--black-bean)" />} 
+                            placeholder="Envie o seu currículo em PDF"
+                            type="text"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                        <div className={styles.authFormButtonContainer}>
+                            <Button
+                                label={"Enviar"}
                                 backgroundColor="--herbal-cream"
                                 color="--black-bean"
                                 fontWeight="600"
