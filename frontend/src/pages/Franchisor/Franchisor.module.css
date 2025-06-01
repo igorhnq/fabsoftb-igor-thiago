@@ -1,0 +1,78 @@
+.imageMock {
+    width: 100%;
+    height: 419px;
+    background-image: url('src/assets/franchisor-header-image.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--latte-foam);
+    text-align: center;
+}
+
+.franchisorTitle {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--latte-foam);
+}
+
+.franchisorHeaderContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 50%;
+}
+
+.franchisorHeaderDescription {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 4.375rem;
+}
+
+.franchisorCardsTitle {
+    font-size: 2rem;
+    width: 350px;
+    text-align: center;
+}
+
+.franchisorCards {
+    display: flex;
+    gap: 5.625rem;
+}
+
+.franchisorFormBanner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    height: 402px;
+    background-image: url('src/assets/franchisor-form-banner.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--latte-foam);
+    text-align: center;
+}
+
+.franchisorFormContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 4.375rem;
+
+}
