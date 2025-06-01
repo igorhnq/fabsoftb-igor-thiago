@@ -1,4 +1,5 @@
 import { CreditCard, FacebookLogo, InstagramLogo, Money, PixLogo, TiktokLogo, XLogo, YoutubeLogo } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 
 import styles from "./Footer.module.css";
 
@@ -14,48 +15,47 @@ export default function Footer({ disableMarginTop = false }: FooterProps) {
             <div className={styles.aboutUs}>
                 <ul className={styles.aboutUsList}>
                     <h5>Sobre Nós</h5>
-                    <li className={styles.aboutUsItem}>Nossa Franquia</li>
-                    <li className={styles.aboutUsItem}>Nosso Café</li>
-                    <li className={styles.aboutUsItem}>Atendimento ao cliente</li>
-                    <li className={styles.aboutUsItem}>Canal de Denúncias</li>
+                    <li className={styles.aboutUsItem}><Link to="/not-found">Nossa Franquia</Link></li>
+                    <li className={styles.aboutUsItem}><Link to="/not-found">Nosso Café</Link></li>
+                    <li className={styles.aboutUsItem}><Link to="/not-found">Atendimento ao cliente</Link></li>
+                    <li className={styles.aboutUsItem}><Link to="/not-found">Canal de Denúncias</Link></li>
                 </ul>
             </div>
             <div className={styles.aboutUs}>
                 <ul className={styles.aboutUsList}>
                     <h5>Carreiras</h5>
-                    <li className={styles.aboutUsItem}>Central de carreiras</li>
+                    <li className={styles.aboutUsItem}><Link to="/not-found">Central de carreiras</Link></li>
                 </ul>
             </div>
             <div className={styles.aboutUs}>
                 <ul className={styles.aboutUsList}>
                     <h5>Termos</h5>
-                    <li className={styles.aboutUsItem}>Termos & Condições das Promoções</li>
-                    <li className={styles.aboutUsItem}>Termos & Condições de Peça e Pague pelo Celular e Retire na Loja</li>
+                    <li className={styles.aboutUsItem}><Link to="/not-found">Termos & Condições das Promoções</Link></li>
+                    <li className={styles.aboutUsItem}><Link to="/not-found">Termos & Condições de Peça e Pague pelo Celular e Retire na Loja</Link></li>
                 </ul>
             </div>
             <div className={styles.aboutUs}>
                 <ul className={styles.aboutUsList}>
                     <h5>Métodos de Pagamento</h5>
                     <li className={styles.paymentMethods}>
-                        <PixLogo size={36} weight="fill" />
-                        <CreditCard size={36} weight="fill" />
-                        <Money size={36} weight="fill" />
+                        <Link to="/not-found"><PixLogo size={36} weight="fill" /></Link>
+                        <Link to="/not-found"><CreditCard size={36} weight="fill" /></Link>
+                        <Link to="/not-found"><Money size={36} weight="fill" /></Link>
                     </li>
                 </ul>
             </div>
             <div className={styles.aboutUs}>
                 <ul className={styles.aboutUsList}>
-                    <img src={logo} alt="logo" />
+                    <Link to="/not-found"><img src={logo} alt="logo" /></Link>
                     <li className={styles.paymentMethods}>
-                        <FacebookLogo size={36} weight="fill" />
-                        <InstagramLogo size={36} weight="fill" />
-                        <XLogo size={36} weight="fill" />
-                        <YoutubeLogo size={36} weight="fill" />
-                        <TiktokLogo size={36} weight="fill" />
+                        <Link to="/not-found"><FacebookLogo size={36} weight="fill" /></Link>
+                        <Link to="/not-found"><InstagramLogo size={36} weight="fill" /></Link>
+                        <Link to="/not-found"><XLogo size={36} weight="fill" /></Link>
+                        <Link to="/not-found"><YoutubeLogo size={36} weight="fill" /></Link>
+                        <Link to="/not-found"><TiktokLogo size={36} weight="fill" /></Link>
                     </li>
                 </ul>
             </div>
-            
         </footer>
     );
 }
