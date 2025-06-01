@@ -1,0 +1,45 @@
+.notFoundContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.notFoundTitle {
+    font-size: 3rem;
+}
+
+.notFoundSubtitle {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.notFoundText {
+    font-size: 2rem;
+    width: 520px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.notFoundButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--matcha-moss);
+    color: var(--black-bean);
+    border: none;
+    border-radius: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 315px;
+    height: 105px;
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.notFoundButton a {
+    text-decoration: none;
+    color: var(--black-bean);
+}
