@@ -24,7 +24,12 @@ export default function Products() {
         <div>
             <Header />
             <div className={styles.productsContainer}>
-                <Banner />
+                <Banner 
+                    title="Navegue pelo nosso catálogo!"
+                    text="ATENÇÃO! Alguns itens não são disponíveis para encomenda, apenas para comer em alguma das cafeterias."
+                    imageUrl="src/assets/products_banner.svg"
+                    showBannerBar={false}
+                />
                 <div className={styles.inputContainer}>
                     <CustomSelect onChange={handleCategoryChange} />
                     <div className={styles.searchContainer}>
