@@ -3,6 +3,7 @@ import Banner from "../../components/Banner/Banner";
 import Footer from "../../components/Footer/Footer";
 import { MapPin } from "@phosphor-icons/react";
 import CoffeeShopUnit from "../../components/CoffeeShopUnit/CoffeeShopUnit";
+import Map from "../../components/Map/Map";
 
 import styles from "./CoffeeShops.module.css";
 
@@ -37,7 +38,7 @@ export default function CoffeeShops() {
                         </div>
                     </div>
                     <div className={styles.coffeeShopsUnitContainerMap}>
-                        
+                        <Map />
                     </div>
                 </div>
             </div>
