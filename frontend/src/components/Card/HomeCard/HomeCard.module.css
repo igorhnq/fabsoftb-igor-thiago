@@ -21,3 +21,8 @@
     font-size: 1rem;
     text-align: center;
 }
+
+.linkWrapper {
+    text-decoration: none;
+    color: var(--black-bean);
+}

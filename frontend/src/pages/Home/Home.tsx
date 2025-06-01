@@ -16,6 +16,7 @@ export default function Home() {
                         Desde o primeiro café servido, buscamos unir sabores autênticos a um ambiente acolhedor. 
                         Hoje, crescemos como uma franquia reconhecida, mantendo nosso compromisso com ingredientes selecionados e um atendimento impecável."
                         imageUrl="/src/assets/home-history-card-image.svg"
+                        linkTo="/about"
                     />
                     <HomeCard 
                         title="Empregos" 
@@ -23,6 +24,7 @@ export default function Home() {
                         o atendimento excepcional e a paixão por proporcionar momentos especiais aos nossos clientes. Oferecemos treinamentos e oportunidades de crescimento. 
                         Envie seu currículo e embarque nessa jornada conosco!"
                         imageUrl="src/assets/home-job-card-image.svg"
+                        linkTo="/jobs"
                     />
                     <HomeCard 
                         title="Cardápio"
@@ -30,6 +32,7 @@ export default function Home() {
                         sofisticadas, além de pães, bolos e doces típicos, como o tradicional Apfelstrudel. Para acompanhar, temos opções de sanduíches, croissants e bebidas geladas. 
                         Venha experimentar!"
                         imageUrl="src/assets/home-menu-card-image.svg"
+                        linkTo="/products"
                     />
                 </div>
             </div>
