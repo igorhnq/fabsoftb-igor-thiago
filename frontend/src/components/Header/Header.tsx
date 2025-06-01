@@ -18,7 +18,7 @@ export default function Header({ isTransparent = false }) {
                         <ul className={styles.navList}>
                             <li><Link className={styles.link} to="/home">Início</Link></li>
                             <li><Link className={styles.link} to="/products">Cardápio</Link></li>
-                            <li><Link className={styles.link} to="/cafeterias">Cafeterias</Link></li>
+                            <li><Link className={styles.link} to="/coffee-shops">Cafeterias</Link></li>
                             <li><Link className={styles.link} to="/franchisor">Franquiador</Link></li>
                         </ul>
                         <Bag

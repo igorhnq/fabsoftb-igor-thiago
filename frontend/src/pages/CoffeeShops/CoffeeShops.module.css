@@ -1,0 +1,46 @@
+.coffeeShopsContainer {
+    margin: 0 5rem 0 5rem;
+}
+
+.coffeShopsUnitsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.coffeeShopsUnitContainerHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+.coffeeShopsUnitContainerHeaderTitle {
+    font-size: 2rem;
+}
+
+.coffeeShopsUnitContainerHeaderText {
+    font-size: 1.2rem;
+}
+
+.coffeeShopsContentContainer {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.coffeeShopsUnitContainerContent {
+    width: 35rem;
+    height: 30rem;
+    padding-right: 2rem;
+    overflow-y: auto;
+}
+
+.coffeeShopsUnitContainerMap {
+    width: 50%;
+    height: 28rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+}

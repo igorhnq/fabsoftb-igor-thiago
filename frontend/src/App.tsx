@@ -10,6 +10,7 @@ import About from './pages/About/About';
 import { CartProvider } from "./contexts/CartContext.tsx";
 import Jobs from './pages/Jobs/Jobs';
 import Franchisor from './pages/Franchisor/Franchisor';
+import CoffeeShops from './pages/CoffeeShops/CoffeeShops';
 
 import "./global.css";
 
@@ -27,6 +28,7 @@ export default function App() {
 				<Route path="/about" element={<About />} />
 				<Route path="/jobs" element={<Jobs />} />
 				<Route path="/franchisor" element={<Franchisor />} />
+				<Route path="/coffee-shops" element={<CoffeeShops />} />
 			</Routes>
 		</CartProvider>
 	)
