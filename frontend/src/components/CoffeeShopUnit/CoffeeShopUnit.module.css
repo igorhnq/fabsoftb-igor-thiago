@@ -1,0 +1,44 @@
+.teste {
+    border-top: 1px solid var(--latte-caramelo);
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.coffeeShopsUnitInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.coffeeShopsUnitInfoTitle {
+    font-size: 1.2rem;
+}
+
+.coffeeShopsUnitInfoAddress {
+    font-size: 0.9rem;
+}
+
+.coffeeShopsUnitInfoMoreInfo {
+    font-size: 0.9rem;
+    color: var(--matcha-leaf);
+    font-weight: 700;
+}
+
+.iconMock {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--vanilla-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+.teste {
+    display: flex;
+    align-items: center;
+}
