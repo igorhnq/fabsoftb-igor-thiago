@@ -17,6 +17,12 @@ export default function Profile() {
     const [user, setUser] = useState<UserModel | null>(null);
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/register');
+            return;
+        }
+
         const fetchData = async () => {
             try {
                 const [ordersData, userData] = await Promise.all([
@@ -25,11 +31,10 @@ export default function Profile() {
                 ]);
                 setOrders(ordersData);
                 setUser(userData);
-            } catch (error) {
+            } catch (error: any) {
                 console.error('Erro ao buscar dados:', error);
-                // Se houver erro de autenticação, redirecionar para login
                 if (error.response?.status === 401) {
-                    navigate('/login');
+                    navigate('/register');
                 }
             }
         };

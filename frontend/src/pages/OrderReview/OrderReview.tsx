@@ -21,6 +21,12 @@ export default function OrderReview() {
     const [products, setProducts] = useState<OrderProduct[]>([]);
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/register');
+            return;
+        }
+
         if (location.state && location.state.products) {
             setProducts(location.state.products);
         } else {
@@ -31,6 +37,12 @@ export default function OrderReview() {
     const totalAmount = products.reduce((sum, prod) => sum + (prod.price * (prod.quantity || 1)), 0);
 
     const handleConfirmPurchase = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/register');
+            return;
+        }
+
         const order = {
             totalAmount,
             products: products
@@ -52,8 +64,12 @@ export default function OrderReview() {
                     navigate("/profile");
                 }
             });
-        } catch (error) {
-            alert("Erro ao criar pedido");
+        } catch (error: any) {
+            if (error.response?.status === 401) {
+                navigate('/register');
+            } else {
+                navigate('/');
+            }
         }
     };
 
