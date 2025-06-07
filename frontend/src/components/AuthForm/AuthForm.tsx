@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { register, login, UserModel, LoginRequest } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
 
+import Swal from 'sweetalert2'
+
 import styles from "./AuthForm.module.css";
 
 interface AuthFormProps {
@@ -42,10 +44,21 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
             const credentials: LoginRequest = { email, password };
             const response = await login(credentials);
             localStorage.setItem("token", response.token);
-            alert("Login realizado com sucesso!");
-            navigate('/products');
+            Swal.fire({
+                icon: "success",
+                title: "Login realizado com sucesso!",
+                showConfirmButton: true,
+                confirmButtonText: "Ir para a página de produtos",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/products');
+                }
+            });
         } catch (error) {
-            alert("Email ou senha inválidos!");
+            Swal.fire({
+                icon: "error",
+                title: "Email ou senha inválidos!",
+            });
         }
     };
 
