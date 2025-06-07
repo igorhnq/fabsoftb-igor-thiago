@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import { useState } from "react";
 import CartDrawer from "../CartDrawer/CartDrawer";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Header.module.css";
 
 export default function Header({ isTransparent = false }) {
     const [cartOpen, setCartOpen] = useState(false);
-
+    const navigate = useNavigate();
     return (
         <>
             <header className={isTransparent ? styles.transparentHeader : ''}>
@@ -29,7 +30,14 @@ export default function Header({ isTransparent = false }) {
                             onClick={() => setCartOpen(true)}
                             style={{ cursor: "pointer" }}
                         />
-                        <User className={styles.icon} size={32} weight="bold" color="var(--matcha-leaf)" />
+                        <User 
+                            className={styles.icon} 
+                            size={32} 
+                            weight="bold" 
+                            color="var(--matcha-leaf)" 
+                            onClick={() => navigate("/profile")} 
+                            style={{ cursor: "pointer" }}
+                        />
                     </nav>
                 )}
             </header>
