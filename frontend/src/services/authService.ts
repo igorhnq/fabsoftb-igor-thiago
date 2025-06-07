@@ -8,6 +8,14 @@ const api: AxiosInstance = axios.create({
     }
 });
 
+api.interceptors.request.use(config => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
 export interface UserModel {
     id?: number;
     name: string;
@@ -32,5 +40,10 @@ export const register = async (user: UserModel): Promise<UserModel> => {
 
 export const login = async (credentials: LoginRequest): Promise<AuthResponse> => {
     const response = await api.post<AuthResponse>('/api/v1/auth/login', credentials);
+    return response.data;
+};
+
+export const getCurrentUser = async (): Promise<UserModel> => {
+    const response = await api.get<UserModel>('/api/v1/auth/me');
     return response.data;
 };

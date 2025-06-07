@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 import java.util.Collections;
+import org.springframework.security.core.Authentication;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -37,5 +38,17 @@ public class AppUserController {
         } else {
             return ResponseEntity.status(401).body("Email ou senha inválidos");
         }
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<?> getCurrentUser(Authentication authentication) {
+        String email = authentication.getName();
+        Optional<AppUserModel> userOpt = appUserService.findByEmail(email);
+        if (userOpt.isPresent()) {
+            AppUserModel user = userOpt.get();
+            user.setPassword(null); // Não retornar a senha
+            return ResponseEntity.ok(user);
+        }
+        return ResponseEntity.status(404).build();
     }
 }
