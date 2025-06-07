@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { createOrder } from "../../services/orderService";
 import { ProductModel } from "../../services/productService";
 
+import Swal from 'sweetalert2'
+
 interface OrderProduct extends ProductModel {
     quantity?: number;
 }
@@ -40,8 +42,16 @@ export default function OrderReview() {
         };
         try {
             await createOrder(order);
-            alert("Pedido realizado com sucesso!");
-            navigate("/profile");
+            Swal.fire({
+                icon: "success",
+                title: "Pedido realizado com sucesso!",
+                showConfirmButton: true,
+                confirmButtonText: "Ir para histórico de compras",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/profile");
+                }
+            });
         } catch (error) {
             alert("Erro ao criar pedido");
         }
