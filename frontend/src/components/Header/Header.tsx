@@ -13,7 +13,9 @@ export default function Header({ isTransparent = false }) {
     return (
         <>
             <header className={isTransparent ? styles.transparentHeader : ''}>
-                <img src={logo} />
+            <Link to="/home">
+                <img src={logo} style={{ cursor: "pointer" }} alt="Logo" />
+            </Link>
                 {!isTransparent && (
                     <nav>
                         <ul className={styles.navList}>
