@@ -1,5 +1,6 @@
 import styles from "./ProductCard.module.css";
 import { useNavigate } from "react-router-dom";
+import fallbackImage from "../../../assets/not-found-icon.svg";
 
 interface ProductCardProps {
     showDetails?: boolean;
@@ -37,16 +38,15 @@ export default function ProductCard({
 
     return (
         <div className={styles.productCard} style={cardStyles} onClick={handleClick}>
-            {imageUrl && (
-                <img 
-                    src={imageUrl} 
-                    alt={name || 'Produto'} 
-                    className={styles.productImage}
-                    onError={(e) => {
-                        e.currentTarget.src = 'https://via.placeholder.com/300x200?text=Produto';
-                    }}
-                />
-            )}
+            <img 
+                src={imageUrl || fallbackImage} 
+                alt={name || 'Produto'} 
+                className={styles.productImage}
+                onError={(e) => {
+                    e.currentTarget.onerror = null; 
+                    e.currentTarget.src = fallbackImage;
+                }}
+            />
             {showDetails && (
                 <>
                     <div className={styles.priceTag}>R$ {price?.toFixed(2) || ''}</div>
