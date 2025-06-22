@@ -26,10 +26,13 @@
 }
 
 .profileImage {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    background-color: var(--misty-milk);
+    background-color: #e0e0e0;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    border: 4px solid var(--misty-milk);
 }
 
 .profileDescription {
@@ -64,4 +67,40 @@
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
     padding: 0.5rem;
+}
+
+.avatarSelector {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.avatarSelector p {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.avatarGrid {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.avatarOption {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.avatarOption:hover {
+    transform: scale(1.1);
+}
+
+.selectedAvatar {
+    border-color: var(--latte-caramelo);
+    transform: scale(1.1);
 }

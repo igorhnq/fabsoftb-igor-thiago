@@ -46,7 +46,7 @@ public class AppUserController {
         Optional<AppUserModel> userOpt = appUserService.findByEmail(email);
         if (userOpt.isPresent()) {
             AppUserModel user = userOpt.get();
-            user.setPassword(null); // Não retornar a senha
+            user.setPassword(null); 
             return ResponseEntity.ok(user);
         }
         return ResponseEntity.status(404).build();
@@ -60,8 +60,23 @@ public class AppUserController {
             AppUserModel user = userOpt.get();
             user.setDescription(description);
             AppUserModel updatedUser = appUserService.updateUser(user);
-            updatedUser.setPassword(null); // Não retornar a senha
+            updatedUser.setPassword(null); 
             return ResponseEntity.ok(updatedUser);
+        }
+        return ResponseEntity.status(404).body("Usuário não encontrado");
+    }
+
+    @PutMapping("/profile")
+    public ResponseEntity<?> updateProfile(@RequestBody AppUserModel updatedUser, Authentication authentication) {
+        String email = authentication.getName();
+        Optional<AppUserModel> userOpt = appUserService.findByEmail(email);
+        if (userOpt.isPresent()) {
+            AppUserModel user = userOpt.get();
+            user.setDescription(updatedUser.getDescription());
+            user.setProfileImageUrl(updatedUser.getProfileImageUrl());
+            AppUserModel savedUser = appUserService.updateUser(user);
+            savedUser.setPassword(null); 
+            return ResponseEntity.ok(savedUser);
         }
         return ResponseEntity.status(404).body("Usuário não encontrado");
     }

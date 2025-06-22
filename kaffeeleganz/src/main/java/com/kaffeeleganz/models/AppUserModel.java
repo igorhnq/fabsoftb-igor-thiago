@@ -17,4 +17,5 @@ public class AppUserModel {
     private String cpf;
     private String password;
     private String description;
+    private String profileImageUrl;
 }

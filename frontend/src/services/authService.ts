@@ -23,6 +23,7 @@ export interface UserModel {
     cpf: string;
     password: string;
     description?: string;
+    profileImageUrl?: string;
 }
 
 export interface LoginRequest {
@@ -51,5 +52,10 @@ export const getCurrentUser = async (): Promise<UserModel> => {
 
 export const updateUserDescription = async (description: string): Promise<UserModel> => {
     const response = await api.put<UserModel>('/api/v1/auth/description', description);
+    return response.data;
+};
+
+export const updateUserProfile = async (profileData: { description: string; profileImageUrl: string }): Promise<UserModel> => {
+    const response = await api.put<UserModel>('/api/v1/auth/profile', profileData);
     return response.data;
 };

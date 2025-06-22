@@ -4,19 +4,40 @@ import Button from "../../components/Input/Button/Button";
 import OrderCard from "../../components/Card/OrderCard/OrderCard";
 import Footer from "../../components/Footer/Footer";
 import { getMyOrders, OrderModel } from "../../services/orderService";
-import { getCurrentUser, updateUserDescription, UserModel } from "../../services/authService";
+import { getCurrentUser, UserModel, updateUserProfile } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
 
 import Swal from 'sweetalert2';
 
 import styles from "./Profile.module.css";
+import fallbackImage from "../../assets/not-found-icon.svg";
+
+import jolyne from "../../assets/jolyne-avatar.png";
+import ramonaFlowers from "../../assets/ramona-flowers-avatar.png";
+import gon from "../../assets/gon-avatar.jpg";
+import casca from "../../assets/casca-avatar.jpg";
+import sheep from "../../assets/sheep-avatar.jpg";
+
+const availableAvatars = [
+    { id: 'jolyne', src: jolyne },
+    { id: 'ramonaFlowers', src: ramonaFlowers },
+    { id: 'gon', src: gon },
+    { id: 'casca', src: casca },
+    { id: 'sheep', src: sheep }
+];
+
+const getAvatarSrc = (avatarId?: string) => {
+    if (!avatarId) return fallbackImage;
+    const found = availableAvatars.find(a => a.id === avatarId);
+    return found ? found.src : fallbackImage;
+};
 
 export default function Profile() {
     const navigate = useNavigate();
     const [orders, setOrders] = useState<OrderModel[]>([]);
     const [user, setUser] = useState<UserModel | null>(null);
-    const [isTextareaFocused, setIsTextareaFocused] = useState(false);
     const [description, setDescription] = useState("");
+    const [profileImageUrl, setProfileImageUrl] = useState("");
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -34,6 +55,7 @@ export default function Profile() {
                 setOrders(ordersData);
                 setUser(userData);
                 setDescription(userData.description || "");
+                setProfileImageUrl(userData.profileImageUrl || "");
             } catch (error: any) {
                 console.error('Erro ao buscar dados:', error);
                 if (error.response?.status === 401) {
@@ -59,23 +81,26 @@ export default function Profile() {
         });
     };
 
-    const handleSaveDescription = async () => {
+    const handleSaveProfile = async () => {
         try {
-            const updatedUser = await updateUserDescription(description);
+            const updatedUser = await updateUserProfile({
+                description,
+                profileImageUrl
+            });
             setUser(updatedUser);
             
             Swal.fire({
                 title: "Sucesso!",
-                text: "Descrição salva com sucesso!",
+                text: "Perfil salvo com sucesso!",
                 icon: "success",
                 timer: 2000,
                 showConfirmButton: false
             });
         } catch (error) {
-            console.error('Erro ao salvar descrição:', error);
+            console.error('Erro ao salvar perfil:', error);
             Swal.fire({
                 title: "Erro!",
-                text: "Erro ao salvar descrição. Tente novamente.",
+                text: "Erro ao salvar perfil. Tente novamente.",
                 icon: "error"
             });
         }
@@ -87,7 +112,12 @@ export default function Profile() {
             <h2 className={styles.profileTitle}>Seu perfil</h2>
             <div className={styles.profileContainer}>
                 <div className={styles.profileContent}>
-                    <div className={styles.profileImage}></div>
+                    <img 
+                        src={getAvatarSrc(user?.profileImageUrl)}
+                        alt="Foto de perfil"
+                        className={styles.profileImage}
+                        onError={(e) => { e.currentTarget.src = fallbackImage; }}
+                    />
                     <h2>{user?.name || 'Carregando...'}</h2>
                 </div>
                 <Button
@@ -97,14 +127,26 @@ export default function Profile() {
                     fontWeight="600"
                     onClick={handleLogout}
                 />
+                <div className={styles.avatarSelector}>
+                    <p>Escolha seu avatar:</p>
+                    <div className={styles.avatarGrid}>
+                        {availableAvatars.map(avatar => (
+                            <img
+                                key={avatar.id}
+                                src={avatar.src}
+                                alt={`Avatar ${avatar.id}`}
+                                className={`${styles.avatarOption} ${profileImageUrl === avatar.id ? styles.selectedAvatar : ''}`}
+                                onClick={() => setProfileImageUrl(avatar.id)}
+                            />
+                        ))}
+                    </div>
+                </div>
                 <div className={styles.profileDescription}>
                     <textarea 
                         className={styles.profileDescriptionTextarea} 
                         placeholder="Adicione uma descrição sobre você!"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        onFocus={() => setIsTextareaFocused(true)}
-                        onBlur={() => setIsTextareaFocused(false)}
                     />
                 </div>
                 <Button
@@ -112,7 +154,7 @@ export default function Profile() {
                     backgroundColor="--misty-milk"
                     color="--black-bean"
                     fontWeight="600"
-                    onClick={handleSaveDescription}
+                    onClick={handleSaveProfile}
                 />
                 <h2 className={styles.purchaseHistoryTitle}>Histórico de pedidos</h2>
                 {orders.length === 0 ? (
