@@ -21,7 +21,8 @@ export interface ProductModel {
     name: string;       
     price: number;      
     category: string; 
-    description: string; 
+    description: string;
+    imageUrl?: string;
 }
 
 export const getAllProducts = async (): Promise<ProductModel[]> => {

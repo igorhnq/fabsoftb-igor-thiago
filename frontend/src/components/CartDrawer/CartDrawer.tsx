@@ -25,7 +25,9 @@ export default function CartDrawer({ open, onClose, children }: CartDrawerProps)
                     name: item.name,
                     price: item.price,
                     category: item.category,
-                    quantity: item.quantity
+                    quantity: item.quantity,
+                    imageUrl: item.imageUrl,
+                    description: item.description
                 }))
             }
         });
@@ -60,6 +62,7 @@ export default function CartDrawer({ open, onClose, children }: CartDrawerProps)
                                     id={item.id}
                                     name={item.name}
                                     price={item.price}
+                                    imageUrl={item.imageUrl}
                                 />
                                 <div className={styles.cartDrawerItemDetails}>
                                     <p className={styles.cartDrawerItemTitle}>{item.name}</p>

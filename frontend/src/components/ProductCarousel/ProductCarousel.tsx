@@ -83,6 +83,7 @@ export default function ProductCarousel({
                                     height="200px"
                                     showQuantity={showQuantity}
                                     quantity={product.quantity}
+                                    imageUrl={product.imageUrl}
                                 />
                             </div>
                         ))}

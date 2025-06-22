@@ -15,9 +15,6 @@ public class ProductModel {
     private String name;
     private Float price;
     private String category;
-    private String description; // talvez tenha que mudar o tipo para ter mais caber mais caracteres
-    // private String image; ainda não sei como fazer
-
-    // obter detalhes do produto;
-    // adicionar ao carrinho;
+    private String description;
+    private String imageUrl;
 }

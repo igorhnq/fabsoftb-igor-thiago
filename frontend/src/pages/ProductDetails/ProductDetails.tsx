@@ -44,7 +44,10 @@ export default function ProductDetails() {
                         id: product.id,
                         name: product.name,
                         price: product.price,
-                        category: product.category
+                        category: product.category,
+                        imageUrl: product.imageUrl,
+                        description: product.description,
+                        quantity: quantity
                     }
                 ]
             }
@@ -52,13 +55,14 @@ export default function ProductDetails() {
     };
 
     const handleAddToCart = () => {
-        if (!product) return;
+        if (!product || !product.id) return;
         addItem({
             id: product.id,
             name: product.name,
             price: product.price,
             category: product.category,
-            description: product.description
+            description: product.description,
+            imageUrl: product.imageUrl
         }, quantity);
     };
 
@@ -79,12 +83,13 @@ export default function ProductDetails() {
                             id={product.id!}
                             name={product.name}
                             price={product.price}
+                            imageUrl={product.imageUrl}
                         />
                         <div className={styles.productDetailsImageCarousel}>
-                            <ProductCard showDetails={false} width={"100px"} height={"100px"} />
-                            <ProductCard showDetails={false} width={"100px"} height={"100px"} />
-                            <ProductCard showDetails={false} width={"100px"} height={"100px"} />
-                            <ProductCard showDetails={false} width={"100px"} height={"100px"} />
+                            <ProductCard showDetails={false} width={"100px"} height={"100px"} imageUrl={product.imageUrl} />
+                            <ProductCard showDetails={false} width={"100px"} height={"100px"} imageUrl={product.imageUrl} />
+                            <ProductCard showDetails={false} width={"100px"} height={"100px"} imageUrl={product.imageUrl} />
+                            <ProductCard showDetails={false} width={"100px"} height={"100px"} imageUrl={product.imageUrl} />
                         </div>
                     </div>
 

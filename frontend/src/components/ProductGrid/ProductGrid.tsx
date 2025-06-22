@@ -45,6 +45,7 @@ export default function ProductGrid({ category, searchTerm }: ProductGridProps) 
                         height="200px" 
                         name={product.name} 
                         price={product.price}
+                        imageUrl={product.imageUrl}
                     />
                 ))
             ) : (
