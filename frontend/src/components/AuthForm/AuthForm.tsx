@@ -3,7 +3,7 @@ import Button from "../Input/Button/Button";
 import { EnvelopeSimple, Lock, IdentificationCard, User, LockKey, Phone, FilePdf } from "@phosphor-icons/react";
 import React, { useState } from "react";
 import { register, login, UserModel, LoginRequest } from "../../services/authService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Swal from 'sweetalert2'
 
@@ -89,7 +89,7 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                         />
-                        <a className={styles.authFormForgotPassword} href="#">Esqueci minha senha...</a>
+                        <Link to="/not-found" className={styles.authFormForgotPassword}>Esqueci minha senha...</Link>
                         <div className={styles.authFormButtonContainer}>
                             <Button
                                 label={"CRIAR CONTA"}
