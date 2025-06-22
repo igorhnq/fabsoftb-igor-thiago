@@ -51,4 +51,18 @@ public class AppUserController {
         }
         return ResponseEntity.status(404).build();
     }
+
+    @PutMapping("/description")
+    public ResponseEntity<?> updateDescription(@RequestBody String description, Authentication authentication) {
+        String email = authentication.getName();
+        Optional<AppUserModel> userOpt = appUserService.findByEmail(email);
+        if (userOpt.isPresent()) {
+            AppUserModel user = userOpt.get();
+            user.setDescription(description);
+            AppUserModel updatedUser = appUserService.updateUser(user);
+            updatedUser.setPassword(null); // Não retornar a senha
+            return ResponseEntity.ok(updatedUser);
+        }
+        return ResponseEntity.status(404).body("Usuário não encontrado");
+    }
 }

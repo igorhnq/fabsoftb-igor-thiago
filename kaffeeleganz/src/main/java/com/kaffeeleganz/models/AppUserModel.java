@@ -16,4 +16,5 @@ public class AppUserModel {
     private String email;
     private String cpf;
     private String password;
+    private String description;
 }

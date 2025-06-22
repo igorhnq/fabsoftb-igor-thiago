@@ -4,7 +4,7 @@ import Button from "../../components/Input/Button/Button";
 import OrderCard from "../../components/Card/OrderCard/OrderCard";
 import Footer from "../../components/Footer/Footer";
 import { getMyOrders, OrderModel } from "../../services/orderService";
-import { getCurrentUser, UserModel } from "../../services/authService";
+import { getCurrentUser, updateUserDescription, UserModel } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
 
 import Swal from 'sweetalert2';
@@ -15,6 +15,8 @@ export default function Profile() {
     const navigate = useNavigate();
     const [orders, setOrders] = useState<OrderModel[]>([]);
     const [user, setUser] = useState<UserModel | null>(null);
+    const [isTextareaFocused, setIsTextareaFocused] = useState(false);
+    const [description, setDescription] = useState("");
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -31,6 +33,7 @@ export default function Profile() {
                 ]);
                 setOrders(ordersData);
                 setUser(userData);
+                setDescription(userData.description || "");
             } catch (error: any) {
                 console.error('Erro ao buscar dados:', error);
                 if (error.response?.status === 401) {
@@ -56,6 +59,28 @@ export default function Profile() {
         });
     };
 
+    const handleSaveDescription = async () => {
+        try {
+            const updatedUser = await updateUserDescription(description);
+            setUser(updatedUser);
+            
+            Swal.fire({
+                title: "Sucesso!",
+                text: "Descrição salva com sucesso!",
+                icon: "success",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        } catch (error) {
+            console.error('Erro ao salvar descrição:', error);
+            Swal.fire({
+                title: "Erro!",
+                text: "Erro ao salvar descrição. Tente novamente.",
+                icon: "error"
+            });
+        }
+    };
+
     return (
         <>
             <Header />
@@ -73,8 +98,22 @@ export default function Profile() {
                     onClick={handleLogout}
                 />
                 <div className={styles.profileDescription}>
-                    <p>Adicione uma descrição sobre você!</p>
+                    <textarea 
+                        className={styles.profileDescriptionTextarea} 
+                        placeholder="Adicione uma descrição sobre você!"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        onFocus={() => setIsTextareaFocused(true)}
+                        onBlur={() => setIsTextareaFocused(false)}
+                    />
                 </div>
+                <Button
+                    label="Salvar"
+                    backgroundColor="--misty-milk"
+                    color="--black-bean"
+                    fontWeight="600"
+                    onClick={handleSaveDescription}
+                />
                 <h2 className={styles.purchaseHistoryTitle}>Histórico de pedidos</h2>
                 {orders.length === 0 ? (
                     <div className={styles.noOrders}>

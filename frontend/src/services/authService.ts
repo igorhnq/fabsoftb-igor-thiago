@@ -22,6 +22,7 @@ export interface UserModel {
     email: string;
     cpf: string;
     password: string;
+    description?: string;
 }
 
 export interface LoginRequest {
@@ -45,5 +46,10 @@ export const login = async (credentials: LoginRequest): Promise<AuthResponse> =>
 
 export const getCurrentUser = async (): Promise<UserModel> => {
     const response = await api.get<UserModel>('/api/v1/auth/me');
+    return response.data;
+};
+
+export const updateUserDescription = async (description: string): Promise<UserModel> => {
+    const response = await api.put<UserModel>('/api/v1/auth/description', description);
     return response.data;
 };

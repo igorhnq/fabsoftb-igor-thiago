@@ -36,4 +36,8 @@ public class AppUserService {
     public Optional<AppUserModel> findByEmail(String email) {
         return appUserRepository.findByEmail(email);
     }
+
+    public AppUserModel updateUser(AppUserModel user) {
+        return appUserRepository.save(user);
+    }
 }
