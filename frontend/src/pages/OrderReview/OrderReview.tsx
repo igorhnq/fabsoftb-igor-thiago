@@ -57,6 +57,9 @@ export default function OrderReview() {
             Swal.fire({
                 icon: "success",
                 title: "Pedido realizado com sucesso!",
+                confirmButtonColor: "var(--matcha-leaf)",
+                background: "var(--dusty-matcha)",
+                color: "var(--black-bean)",
                 showConfirmButton: true,
                 confirmButtonText: "Ir para histórico de compras",
             }).then((result) => {

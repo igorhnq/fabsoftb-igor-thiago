@@ -69,6 +69,10 @@ export default function Profile() {
     const handleLogout = () => {
         Swal.fire({
             title: "Deseja realmente sair?",
+            background: "var(--dusty-matcha)",
+            confirmButtonColor: "var(--matcha-leaf)",
+            cancelButtonColor: "var(--matcha-leaf)",
+            color: "var(--black-bean)",
             icon: "question",
             showCancelButton: true,
             confirmButtonText: "Sim, sair",
@@ -92,6 +96,9 @@ export default function Profile() {
             Swal.fire({
                 title: "Sucesso!",
                 text: "Perfil salvo com sucesso!",
+                confirmButtonColor: "var(--matcha-leaf)",
+                background: "var(--dusty-matcha)",
+                color: "var(--black-bean)",
                 icon: "success",
                 timer: 2000,
                 showConfirmButton: false
@@ -101,7 +108,10 @@ export default function Profile() {
             Swal.fire({
                 title: "Erro!",
                 text: "Erro ao salvar perfil. Tente novamente.",
-                icon: "error"
+                icon: "error",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
             });
         }
     };

@@ -25,16 +25,39 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
         if (password !== confirmPassword) {
-            alert("As senhas não coincidem!");
+            Swal.fire({
+                icon: "error",
+                title: "As senhas não coincidem!",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
             return;
         }
         try {
             const userData: UserModel = { name, email, cpf, password };
             await register(userData);
-            alert("Cadastro realizado com sucesso! Faça login para continuar.");
-            navigate('/login');
+            Swal.fire({
+                icon: "success",
+                title: "Cadastro realizado com sucesso! Faça login para continuar.",
+                showConfirmButton: true,
+                confirmButtonText: "Ir para a página de login",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login');
+                }
+            });
         } catch (error) {
-            alert("Erro ao cadastrar!");
+            Swal.fire({
+                icon: "error",
+                title: "Erro ao cadastrar!",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
         }
     };
 
@@ -47,6 +70,9 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
             Swal.fire({
                 icon: "success",
                 title: "Login realizado com sucesso!",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+                background: "var(--dusty-matcha)",
                 showConfirmButton: true,
                 confirmButtonText: "Ir para a página de produtos",
             }).then((result) => {
@@ -58,6 +84,9 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
             Swal.fire({
                 icon: "error",
                 title: "Email ou senha inválidos!",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
             });
         }
     };
@@ -158,12 +187,6 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
                             placeholder="Digite o seu email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
-                        />
-                        <AuthInput 
-                            icon={<IdentificationCard size={30} weight="bold" color="var(--black-bean)" />} 
-                            placeholder="Digite o seu CPF"
-                            value={cpf}
-                            onChange={e => setCpf(e.target.value)}
                         />
                         <AuthInput 
                             icon={<Lock size={30} weight="bold" color="var(--black-bean)" />} 
