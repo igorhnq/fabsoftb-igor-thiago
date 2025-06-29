@@ -14,7 +14,7 @@ interface CartDrawerProps {
 }
 
 export default function CartDrawer({ open, onClose, children }: CartDrawerProps) {
-    const { items, total, removeItem, updateQuantity } = useCart();
+    const { items, total, removeItem, updateQuantity, clearCart } = useCart();
     const navigate = useNavigate();
 
     const handlePayment = () => {
@@ -32,16 +32,15 @@ export default function CartDrawer({ open, onClose, children }: CartDrawerProps)
             }
         });
         onClose();
+        clearCart();
     };
 
     return (
         <>
-            {/* Overlay */}
             <div
                 className={`${styles.overlay} ${open ? styles.open : ""}`}
                 onClick={onClose}
             />
-            {/* Drawer */}
             <div className={`${styles.drawer} ${open ? styles.open : ""}`}>
                 <div className={styles.cartDrawerHeader}>
                     <button className={styles.closeBtn} onClick={onClose}>
