@@ -13,17 +13,19 @@ import styles from "./Profile.module.css";
 import fallbackImage from "../../assets/not-found-icon.svg";
 
 import jolyne from "../../assets/jolyne-avatar.png";
-import ramonaFlowers from "../../assets/ramona-flowers-avatar.png";
 import gon from "../../assets/gon-avatar.jpg";
 import casca from "../../assets/casca-avatar.jpg";
 import sheep from "../../assets/sheep-avatar.jpg";
+import marcio from "../../assets/marcio-avatar.jpg";
+import mclovin from "../../assets/mclovin-avatar.jpg";
 
 const availableAvatars = [
     { id: 'jolyne', src: jolyne },
-    { id: 'ramonaFlowers', src: ramonaFlowers },
+    { id: 'marcio', src: marcio },
     { id: 'gon', src: gon },
     { id: 'casca', src: casca },
-    { id: 'sheep', src: sheep }
+    { id: 'sheep', src: sheep },
+    { id: 'mclovin', src: mclovin }
 ];
 
 const getAvatarSrc = (avatarId?: string) => {
