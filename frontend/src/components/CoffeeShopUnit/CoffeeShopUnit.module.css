@@ -21,8 +21,14 @@
 
 .coffeeShopsUnitInfoMoreInfo {
     font-size: 0.9rem;
-    color: var(--matcha-leaf);
     font-weight: 700;
+    text-decoration: none;
+    color: var(--matcha-leaf);
+}
+
+.coffeeShopsUnitInfoMoreInfo a {
+    text-decoration: none;
+    color: var(--matcha-leaf);
 }
 
 .iconMock {

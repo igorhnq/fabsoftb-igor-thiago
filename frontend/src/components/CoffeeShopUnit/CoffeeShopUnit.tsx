@@ -2,6 +2,7 @@ import { Phone, MapPin } from "@phosphor-icons/react";
 import { CoffeeShop } from "../../data/coffeeShops";
 
 import styles from "./CoffeeShopUnit.module.css";
+import { Link } from "react-router-dom";
 
 interface CoffeeShopUnitProps {
     coffeeShop: CoffeeShop;
@@ -20,7 +21,7 @@ export default function CoffeeShopUnit({ coffeeShop, onLocationClick }: CoffeeSh
             <div className={styles.coffeeShopsUnitInfo}>
                 <h2 className={styles.coffeeShopsUnitInfoTitle}>{coffeeShop.name}</h2>
                 <p className={styles.coffeeShopsUnitInfoAddress}>{coffeeShop.endereco}</p>
-                <p className={styles.coffeeShopsUnitInfoMoreInfo}>MAIS INFORMAÇÕES</p>
+                <p className={styles.coffeeShopsUnitInfoMoreInfo}><Link to="/not-found">MAIS INFORMAÇÕES</Link></p>
             </div>
 
             <div className={styles.iconContainer}>
