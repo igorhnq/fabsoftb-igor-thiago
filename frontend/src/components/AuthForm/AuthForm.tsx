@@ -1,6 +1,6 @@
 import AuthInput from "../Input/AuthInput/AuthInput";
 import Button from "../Input/Button/Button";
-import { EnvelopeSimple, Lock, IdentificationCard, User, LockKey, Phone, FilePdf } from "@phosphor-icons/react";
+import { EnvelopeSimple, Lock, IdentificationCard, User, LockKey, Phone, FilePdf, MapPin } from "@phosphor-icons/react";
 import React, { useState } from "react";
 import { register, login, UserModel, LoginRequest } from "../../services/authService";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,9 +12,10 @@ import styles from "./AuthForm.module.css";
 interface AuthFormProps {
     isLoginPage?: boolean;
     isJobsPage?: boolean;
+    isFranchisorPage?: boolean;
 }
 
-export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormProps) {
+export default function AuthForm({ isLoginPage, isJobsPage = false, isFranchisorPage = false }: AuthFormProps) {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -212,6 +213,80 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
         });
     };
 
+    const handleFranchisorSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!name.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Nome é obrigatório!",
+                text: "Por favor, preencha o campo nome.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (!email.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Email é obrigatório!",
+                text: "Por favor, preencha o campo email.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            Swal.fire({
+                icon: "error",
+                title: "Email inválido!",
+                text: "Por favor, insira um email válido.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (!cpf.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Telefone é obrigatório!",
+                text: "Por favor, preencha o campo telefone.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (!password.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Mensagem é obrigatória!",
+                text: "Por favor, preencha o campo mensagem.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        Swal.fire({
+            icon: "success",
+            title: "Solicitação enviada com sucesso!",
+            text: "Entraremos em contato em breve para discutir sobre a franquia.",
+            background: "var(--dusty-matcha)",
+            confirmButtonColor: "var(--matcha-leaf)",
+            color: "var(--black-bean)",
+        });
+    };
+
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         
@@ -287,7 +362,12 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
     return (
         <div className={styles.authFormContainer}>
             <div className={styles.authFormContent}>
-                <h1>{isLoginPage ? "Login" : isJobsPage ? "Envie o seu currículo!" : "Cadastro"}</h1>
+                <h1>
+                    {isLoginPage ? "Login" : 
+                     isJobsPage ? "Envie o seu currículo!" : 
+                     isFranchisorPage ? "Seja um franquiador!" : 
+                     "Cadastro"}
+                </h1>
                 {isLoginPage ? (
                     <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }} onSubmit={handleLogin}>
                         <AuthInput 
@@ -345,6 +425,43 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
                         <AuthInput 
                             icon={<FilePdf size={30} weight="bold" color="var(--black-bean)" />} 
                             placeholder="Envie o seu currículo em PDF"
+                            type="text"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                        <div className={styles.authFormButtonContainer}>
+                            <Button
+                                label={"Enviar"}
+                                backgroundColor="--herbal-cream"
+                                color="--black-bean"
+                                fontWeight="600"
+                                type="submit"
+                            />
+                        </div>
+                    </form>
+                ) : isFranchisorPage ? (
+                    <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }} onSubmit={handleFranchisorSubmit}>
+                        <AuthInput 
+                            icon={<User size={30} weight="bold" color="var(--black-bean)" />} 
+                            placeholder="Digite o seu nome"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                        />
+                        <AuthInput
+                            icon={<EnvelopeSimple size={30} weight="bold" color="var(--black-bean)" />} 
+                            placeholder="Digite o seu email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                        <AuthInput 
+                            icon={<Phone size={30} weight="fill" color="var(--black-bean)" />} 
+                            placeholder="Digite o seu telefone"
+                            value={cpf}
+                            onChange={e => setCpf(e.target.value)}
+                        />
+                        <AuthInput 
+                            icon={<MapPin size={30} weight="bold" color="var(--black-bean)" />} 
+                            placeholder="Localização que deseja franquiar"
                             type="text"
                             value={password}
                             onChange={e => setPassword(e.target.value)}

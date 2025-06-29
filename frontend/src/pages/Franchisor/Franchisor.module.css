@@ -73,6 +73,22 @@
 .franchisorFormContainer {
     display: flex;
     justify-content: center;
-    margin-top: 4.375rem;
+    padding: 10rem;
+    position: relative;
+    overflow: hidden;
+}
 
+.franchisorFormContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('src/assets/franchisor-beans-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px);
+    z-index: -1;
 }

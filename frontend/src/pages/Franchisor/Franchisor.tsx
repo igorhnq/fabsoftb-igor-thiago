@@ -40,10 +40,10 @@ export default function Franchisor() {
                         <p className={styles.franchisorHeaderDescription}>GARRA PARA FAZER ACONTECER E COLHER FRUTOS</p>
                 </section>
                 <section className={styles.franchisorFormContainer}>
-                    <AuthForm />
+                    <AuthForm isFranchisorPage />
                 </section>
             </div>
-            <Footer />
+            <Footer disableMarginTop />
         </>
     )
 }
