@@ -4,6 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import { MapPin } from "@phosphor-icons/react";
 import CoffeeShopUnit from "../../components/CoffeeShopUnit/CoffeeShopUnit";
 import Map from "../../components/Map/Map";
+import { coffeeShops } from "../../data/coffeeShops";
 
 import styles from "./CoffeeShops.module.css";
 
@@ -27,14 +28,12 @@ export default function CoffeeShops() {
                             </div>
                         </div>
                         <div className={styles.coffeeShopsUnitContainerContent}>
-                            <CoffeeShopUnit />
-                            <CoffeeShopUnit />
-                            <CoffeeShopUnit />
-                            <CoffeeShopUnit />
-                            <CoffeeShopUnit />
-                            <CoffeeShopUnit />
-                            <CoffeeShopUnit />
-                            <CoffeeShopUnit />
+                            {coffeeShops.map((coffeeShop) => (
+                                <CoffeeShopUnit 
+                                    key={coffeeShop.id} 
+                                    coffeeShop={coffeeShop} 
+                                />
+                            ))}
                         </div>
                     </div>
                     <div className={styles.coffeeShopsUnitContainerMap}>

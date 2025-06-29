@@ -1,13 +1,18 @@
 import { Phone, MapPin } from "@phosphor-icons/react";
+import { CoffeeShop } from "../../data/coffeeShops";
 
 import styles from "./CoffeeShopUnit.module.css";
 
-export default function CoffeeShopUnit() {
+interface CoffeeShopUnitProps {
+    coffeeShop: CoffeeShop;
+}
+
+export default function CoffeeShopUnit({ coffeeShop }: CoffeeShopUnitProps) {
     return (
         <div className={styles.teste}>
             <div className={styles.coffeeShopsUnitInfo}>
-                <h2 className={styles.coffeeShopsUnitInfoTitle}>Kaffe Eleganz Leste Aventureiro</h2>
-                <p className={styles.coffeeShopsUnitInfoAddress}>Rua Dilan Rutterford - Aventureiro - Joinville - Santa Catarina - Brasil</p>
+                <h2 className={styles.coffeeShopsUnitInfoTitle}>{coffeeShop.name}</h2>
+                <p className={styles.coffeeShopsUnitInfoAddress}>{coffeeShop.endereco}</p>
                 <p className={styles.coffeeShopsUnitInfoMoreInfo}>MAIS INFORMAÇÕES</p>
             </div>
 
