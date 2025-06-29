@@ -1,9 +1,10 @@
 package com.kaffeeleganz.controllers;
 
-import com.kaffeeleganz.models.OrderModel;
 import com.kaffeeleganz.models.AppUserModel;
 import com.kaffeeleganz.services.OrderService;
 import com.kaffeeleganz.repositories.AppUserRepository;
+import com.kaffeeleganz.dto.OrderRequestDTO;
+import com.kaffeeleganz.dto.OrderResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -23,18 +24,17 @@ public class OrderController {
     private AppUserRepository appUserRepository;
 
     @PostMapping
-    public ResponseEntity<?> createOrder(@RequestBody OrderModel order, Authentication authentication) {
+    public ResponseEntity<OrderResponseDTO> createOrder(@RequestBody OrderRequestDTO orderRequest, Authentication authentication) {
         System.out.println("Principal: " + authentication.getPrincipal());
         String email = authentication.getName();
         AppUserModel user = appUserRepository.findByEmail(email).orElseThrow();
-        order.setUser(user);
-        order.setOrderDate(new java.util.Date());
-        OrderModel savedOrder = orderService.saveOrder(order);
+        
+        OrderResponseDTO savedOrder = orderService.createOrderFromRequest(orderRequest, user);
         return ResponseEntity.ok(savedOrder);
     }
 
     @GetMapping("/my")
-    public ResponseEntity<List<OrderModel>> getMyOrders(Authentication authentication) {
+    public ResponseEntity<List<OrderResponseDTO>> getMyOrders(Authentication authentication) {
         String email = (String) authentication.getPrincipal();
         System.out.println("Buscando usuário: " + email);
         Optional<AppUserModel> userOpt = appUserRepository.findByEmail(email);
@@ -42,7 +42,25 @@ public class OrderController {
             return ResponseEntity.status(404).build();
         }
         AppUserModel user = userOpt.get();
-        List<OrderModel> orders = orderService.getOrdersByUser(user);
+        List<OrderResponseDTO> orders = orderService.getOrdersByUser(user);
         return ResponseEntity.ok(orders);
+    }
+
+    @GetMapping("/{orderId}")
+    public ResponseEntity<OrderResponseDTO> getOrderById(@PathVariable Integer orderId, Authentication authentication) {
+        String email = (String) authentication.getPrincipal();
+        Optional<AppUserModel> userOpt = appUserRepository.findByEmail(email);
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).build();
+        }
+        
+        AppUserModel user = userOpt.get();
+        Optional<OrderResponseDTO> orderOpt = orderService.getOrderByIdAndUser(orderId, user);
+        
+        if (orderOpt.isEmpty()) {
+            return ResponseEntity.status(404).build();
+        }
+        
+        return ResponseEntity.ok(orderOpt.get());
     }
 }

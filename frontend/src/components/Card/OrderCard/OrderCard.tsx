@@ -1,14 +1,12 @@
 import { useState } from "react";
 import Button from "../../Input/Button/Button";
 import OrderDetailsModal from "../../Modals/OrderDetailsModal/OrderDetailsModal";
+import { OrderModel } from "../../../services/orderService";
 
 import styles from "./OrderCard.module.css";
 
 interface OrderCardProps {
-    order: {
-        orderDate: string;
-        totalAmount: number;
-    }
+    order: OrderModel;
 }
 
 export default function OrderCard({ order }: OrderCardProps) {
@@ -20,8 +18,8 @@ export default function OrderCard({ order }: OrderCardProps) {
                 <div className={styles.orderCardHeader}>
                     <h2 className={styles.orderCardTitle}>Kaffe Eleganz</h2>
                     <div className={styles.orderCardInfo}>
-                        <p><strong>Data:</strong> {new Date(order.orderDate).toLocaleDateString()}</p>
-                        <p><strong>Total:</strong> R$ {order.totalAmount.toFixed(2).replace('.', ',')}</p>
+                        <p>Data: {new Date(order.orderDate).toLocaleDateString()}</p>
+                        <p>Total: R$ {order.totalAmount.toFixed(2).replace('.', ',')}</p>
                         <Button label="Ver detalhes" onClick={() => setIsModalOpen(true)} />
                     </div>
                 </div>
@@ -29,7 +27,8 @@ export default function OrderCard({ order }: OrderCardProps) {
             
             <OrderDetailsModal 
                 isOpen={isModalOpen} 
-                onClose={() => setIsModalOpen(false)} 
+                onClose={() => setIsModalOpen(false)}
+                orderId={order.id}
             />
         </>
     )

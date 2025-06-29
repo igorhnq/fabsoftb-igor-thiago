@@ -18,6 +18,7 @@ api.interceptors.request.use(config => {
 
 export interface OrderProduct {
     id: number;
+    quantity: number;
 }
 
 export interface OrderRequest {
@@ -30,13 +31,31 @@ export const createOrder = async (order: OrderRequest): Promise<any> => {
     return response.data;
 };
 
+export interface OrderItemModel {
+    id: number;
+    product: {
+        id: number;
+        name: string;
+        price: number;
+        imageUrl: string;
+    };
+    quantity: number;
+    unitPrice: number;
+}
+
 export interface OrderModel {
     id: number;
     orderDate: string;
     totalAmount: number;
+    orderItems: OrderItemModel[];
 }
 
 export const getMyOrders = async (): Promise<OrderModel[]> => {
     const response = await api.get('/api/v1/orders/my');
+    return response.data;
+};
+
+export const getOrderById = async (orderId: number): Promise<OrderModel> => {
+    const response = await api.get(`/api/v1/orders/${orderId}`);
     return response.data;
 };
