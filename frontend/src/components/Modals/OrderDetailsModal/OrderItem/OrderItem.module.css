@@ -1,0 +1,41 @@
+.OrderItem {
+    display: flex;
+    border: 1px solid var(--matcha-moss);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.OrderItemDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+}
+
+.OrderItemDetailsQuantity {
+    display: inline-block;
+    background-color: var(--matcha-moss);
+    color: var(--vanilla-cream);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.OrderItemDetailsQuantityAndPrice {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--matcha-moss);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.OrderItemPriceValue {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--matcha-moss);
+}
