@@ -6,6 +6,11 @@ import com.kaffeeleganz.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Collections;
 import org.springframework.security.core.Authentication;
@@ -18,7 +23,7 @@ public class AppUserController {
     private AppUserService appUserService;
 
     @PostMapping("register")
-    public ResponseEntity<?> register(@RequestBody AppUserModel user) {
+    public ResponseEntity<?> register(@Valid @RequestBody AppUserModel user) {
         try {
             AppUserModel newUser = appUserService.registerUser(user);
 
@@ -27,6 +32,17 @@ public class AppUserController {
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return ResponseEntity.badRequest().body(errors);
     }
 
     @PostMapping("login")

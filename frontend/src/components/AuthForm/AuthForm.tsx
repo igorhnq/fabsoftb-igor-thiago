@@ -24,6 +24,68 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        if (!name.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Nome é obrigatório!",
+                text: "Por favor, preencha o campo nome.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (!email.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Email é obrigatório!",
+                text: "Por favor, preencha o campo email.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            Swal.fire({
+                icon: "error",
+                title: "Email inválido!",
+                text: "Por favor, insira um email válido.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (!password.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Senha é obrigatória!",
+                text: "Por favor, preencha o campo senha.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (password.length < 6) {
+            Swal.fire({
+                icon: "error",
+                title: "Senha muito curta!",
+                text: "A senha deve ter pelo menos 6 caracteres.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
         if (password !== confirmPassword) {
             Swal.fire({
                 icon: "error",
@@ -34,6 +96,7 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
             });
             return;
         }
+        
         try {
             const userData: UserModel = { name, email, cpf, password };
             await register(userData);
@@ -50,10 +113,24 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
                     navigate('/login');
                 }
             });
-        } catch (error) {
+        } catch (error: any) {
+            let errorMessage = "Erro ao cadastrar!";
+            
+            if (error.response && error.response.data) {
+                const backendErrors = error.response.data;
+                if (typeof backendErrors === 'object') {
+                    const errorFields = Object.keys(backendErrors);
+                    if (errorFields.length > 0) {
+                        errorMessage = backendErrors[errorFields[0]];
+                    }
+                } else if (typeof backendErrors === 'string') {
+                    errorMessage = backendErrors;
+                }
+            }
+            
             Swal.fire({
                 icon: "error",
-                title: "Erro ao cadastrar!",
+                title: errorMessage,
                 background: "var(--dusty-matcha)",
                 confirmButtonColor: "var(--matcha-leaf)",
                 color: "var(--black-bean)",
@@ -61,8 +138,107 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
         }
     };
 
+    const handleJobsSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!name.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Nome é obrigatório!",
+                text: "Por favor, preencha o campo nome.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (!email.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Email é obrigatório!",
+                text: "Por favor, preencha o campo email.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            Swal.fire({
+                icon: "error",
+                title: "Email inválido!",
+                text: "Por favor, insira um email válido.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (!cpf.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Telefone é obrigatório!",
+                text: "Por favor, preencha o campo telefone.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (!password.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Currículo é obrigatório!",
+                text: "Por favor, preencha o campo currículo.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        Swal.fire({
+            icon: "success",
+            title: "Currículo enviado com sucesso!",
+            text: "Entraremos em contato em breve.",
+            background: "var(--dusty-matcha)",
+            confirmButtonColor: "var(--matcha-leaf)",
+            color: "var(--black-bean)",
+        });
+    };
+
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        if (!email.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Email é obrigatório!",
+                text: "Por favor, preencha o campo email.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
+        if (!password.trim()) {
+            Swal.fire({
+                icon: "error",
+                title: "Senha é obrigatória!",
+                text: "Por favor, preencha o campo senha.",
+                background: "var(--dusty-matcha)",
+                confirmButtonColor: "var(--matcha-leaf)",
+                color: "var(--black-bean)",
+            });
+            return;
+        }
+        
         try {
             const credentials: LoginRequest = { email, password };
             const response = await login(credentials);
@@ -80,10 +256,19 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
                     navigate('/products');
                 }
             });
-        } catch (error) {
+        } catch (error: any) {
+            let errorMessage = "Email ou senha inválidos!";
+            
+            if (error.response && error.response.data) {
+                const backendError = error.response.data;
+                if (typeof backendError === 'string') {
+                    errorMessage = backendError;
+                }
+            }
+            
             Swal.fire({
                 icon: "error",
-                title: "Email ou senha inválidos!",
+                title: errorMessage,
                 background: "var(--dusty-matcha)",
                 confirmButtonColor: "var(--matcha-leaf)",
                 color: "var(--black-bean)",
@@ -138,7 +323,7 @@ export default function AuthForm({ isLoginPage, isJobsPage = false }: AuthFormPr
                         </div>
                     </form>
                 ) : isJobsPage ? (
-                    <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }} onSubmit={handleRegister}>
+                    <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }} onSubmit={handleJobsSubmit}>
                         <AuthInput 
                             icon={<User size={30} weight="bold" color="var(--black-bean)" />} 
                             placeholder="Digite o seu nome"
