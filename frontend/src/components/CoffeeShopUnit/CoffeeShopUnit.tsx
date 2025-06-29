@@ -5,9 +5,16 @@ import styles from "./CoffeeShopUnit.module.css";
 
 interface CoffeeShopUnitProps {
     coffeeShop: CoffeeShop;
+    onLocationClick?: (lat: number, lng: number) => void;
 }
 
-export default function CoffeeShopUnit({ coffeeShop }: CoffeeShopUnitProps) {
+export default function CoffeeShopUnit({ coffeeShop, onLocationClick }: CoffeeShopUnitProps) {
+    const handleLocationClick = () => {
+        if (onLocationClick) {
+            onLocationClick(coffeeShop.lat, coffeeShop.lng);
+        }
+    };
+
     return (
         <div className={styles.teste}>
             <div className={styles.coffeeShopsUnitInfo}>
@@ -17,10 +24,11 @@ export default function CoffeeShopUnit({ coffeeShop }: CoffeeShopUnitProps) {
             </div>
 
             <div className={styles.iconContainer}>
-                <div className={styles.iconMock}>
-                    <Phone color="var(--matcha-leaf)" size={32} weight="fill" />
-                </div>
-                <div className={styles.iconMock}>
+                <div 
+                    className={styles.iconMock}
+                    onClick={handleLocationClick}
+                    style={{ cursor: 'pointer' }}
+                >
                     <MapPin color="var(--matcha-leaf)" size={32} weight="fill" />
                 </div>
             </div>
